@@ -1,0 +1,19 @@
+header{
+	color: #D0D0D0 ;
+}
+
+#title{
+	margin-top: 5px;
+	margin-left: 5px;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.arcondicionado {
+	padding: 0 5px;
+	font-size: 20px;
+    display: inline; 
+}
+
+body{
+	background: url(../resources/tabletop-homescreen.png) center;
+}

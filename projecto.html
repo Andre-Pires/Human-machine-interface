@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>BarISTa</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/text.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/960_16_col.css">
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+	<script language="javascript" src="javascript.js"></script>
+</head>
+<body>
+	<div class="wrap container_16">
+		<header id="header">
+			<h1 id="title" class="grid_16">BarISTa</h1>
+			<aside id="fillerdiv" class="grid_7">
+				<iframe src="http://free.timeanddate.com/clock/i3vk7o26/n133/szw110/szh110/hbw0/hfc000/cf100/hgr0/hwc000/fav0/fiv0/mqcfff/mql15/mqw4/mqd94/mhcfff/mhl15/mhw4/mhd94/mmv0/hhcbbb/hmcddd" frameborder="0" width="112" height="112"></iframe>
+				<script type="text/javascript">window.onload=GetClock;</script>
+				<div id="clockbox"></div>
+				<br>
+
+				<p class="arcondicionado"	onclick="regulaTemp(this);">+</p>
+				<p class="arcondicionado"	id="temperatura">20°C</p>
+				<p class="arcondicionado"	onclick="regulaTemp(this);">-</p>
+			</aside>
+
+			<div id="mdiv" class="grid_9">
+				<img id="barista" class="menu" onClick="switchMenus();" src="resources/barista_button.png">
+				<img id="ementa" class="menu" onClick="switchMenus();" src="resources/ementa_button.png" style="display:none">
+				<img id="jogos" class="menu" onClick="switchMenus();" src="resources/jogos_button.png" style="display:none">
+				<img id="eventos" class="menu" onClick="switchMenus();" src="resources/eventos_button.png" style="display:none">
+				<img id="talao" class="menu" onClick="switchMenus();" src="resources/talao_button.png" style="display:none">
+				<img id="musica" class="menu" onClick="switchMenus();" src="resources/musica_button.png" style="display:none"></div>
+
+		</header>
+	</div>
+</body>
+</html>
