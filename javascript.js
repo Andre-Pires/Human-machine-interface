@@ -3,7 +3,8 @@
 		tday  =new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday");
 		tmonth=new Array("January","February","March","April","May","June","July","August","September","October","November","December");
 
-		function GetClock(){
+		function GetClock()
+		{
 			d = new Date();
 			nday   = d.getDay();
 			nmonth = d.getMonth();
@@ -13,29 +14,13 @@
 			setTimeout("GetClock()", 1000);
 		}
 
-
-// para alterar botoes ---- OLD
-		function clickMeEvent(obj, o2)
-		{
-		if (obj.innerHTML=="Menu")
-			{
-			obj.style.display="none";
-			o2.style.display="inline";
-			}
-		else if (obj.innerHTML=="Ementa")
-			{
-			obj.style.display="none";
-			o2.style.display="inline";		
-			}
-		}
-		
-
-// funcao de estado dos menus do barista
-
-		function switchMenus(){			
+		// funcao de estado dos menus do barista
+		function switchMenus()
+		{			
 			
 
-			if (document.getElementById('barista').style.display != "none") {
+			if (document.getElementById('barista').style.display != "none") 
+			{
 
 				document.getElementById('fillerdiv').className = "grid_4";
 				document.getElementById('barista').style.display="none";
@@ -53,50 +38,59 @@
 				document.getElementById('musica').style.display="none";
 				document.getElementById('barista').style.display="inline";
 			};
-
 		}
 
 //manter o estado do ar condicionado
 temperatura = 20;
 
-		function regulaTemp(obj){
+		function regulaTemp(obj)
+		{
 
-		if (obj.innerHTML=="-" && temperatura < 15) {
-			alert("Lamentamos mas não é possível manter temperaturas mais baixas.");
-			return;
-		} else if (obj.innerHTML=="+" && temperatura > 27) {
-			alert("Lamentamos mas não é possível manter temperaturas mais altas.");
-			return;
-		};
-
-		if (obj.innerHTML=="+")
+			if (obj.innerHTML=="-" && temperatura < 15) 
 			{
-			document.getElementById('temperatura').innerHTML = ++temperatura + "°C";
-			o2.style.display="inline";
+				alert("Lamentamos mas não é possível manter temperaturas mais baixas.");
+				return;
+			} 
+			else if (obj.innerHTML=="+" && temperatura > 27) 
+			{
+				alert("Lamentamos mas não é possível manter temperaturas mais altas.");
+				return;
+			};
+
+			if (obj.innerHTML=="+")
+			{
+				document.getElementById('temperatura').innerHTML = ++temperatura + "°C";
+				o2.style.display="inline";
 			}
-		else if (obj.innerHTML=="-")
+			else if (obj.innerHTML=="-")
 			{
-			document.getElementById('temperatura').innerHTML = --temperatura + "°C";
+				document.getElementById('temperatura').innerHTML = --temperatura + "°C";
 			};
 		}
 
 // funcao da Ementa
-		function switchEmenta(){			
+		function switchEmenta()
+		{			
 			
-
-			if (document.getElementById('ementa_tabela').style.display == "none") {
+			if (document.getElementById('ementa_tabela').style.display == "none") 
+			{
 				document.getElementById('ementa_tabela').style.display="inline";
-			}else{
+			}
+			else
+			{
 				document.getElementById('ementa_tabela').style.display="none";
 			};
 
 		}
 
 // 1 - ementa, 2 - jogos, 3 - eventos, 4 - talao, 5 - musica
-		function checkMenusOpen(n){			
+		function checkMenusOpen(n)
+		{			
 			
-			if(n != 1){
+			if(n != 1)
+			{
 				document.getElementById('ementa_tabela').style.display="none";
 			}
 
 		}
+
