@@ -23,6 +23,7 @@
 			{
 
 				document.getElementById('fillerdiv').className = "grid_4";
+				document.getElementById('mdiv').className = "grid_11";
 				document.getElementById('barista').style.display="none";
 				document.getElementById('ementa').style.display="inline";
 				document.getElementById('jogos').style.display="inline";
@@ -30,7 +31,8 @@
 				document.getElementById('talao').style.display="inline";
 				document.getElementById('musica').style.display="inline";	
 			}else{
-				document.getElementById('fillerdiv').className = "grid_7";
+				document.getElementById('fillerdiv').className = "grid_6";
+				document.getElementById('mdiv').className = "grid_9";
 				document.getElementById('ementa').style.display="none";
 				document.getElementById('jogos').style.display="none";
 				document.getElementById('eventos').style.display="none";
@@ -94,3 +96,7 @@ temperatura = 20;
 
 		}
 
+		//A implementar
+		function openHelp (obj) {
+			alert("Help: \nIt doesn't do anything yet.");
+		}

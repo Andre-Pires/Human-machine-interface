@@ -8,6 +8,15 @@ header{
 	font-family: 'Open Sans', sans-serif;
 }
 
+#barista{
+	margin-left: 40px;
+}
+
+#ajuda{
+	font-size: 16px;
+	margin-left:auto; margin-right:0px;
+}
+
 .menu{
 	padding-right: 3.6px;
 }
