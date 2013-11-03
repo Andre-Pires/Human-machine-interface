@@ -8,24 +8,38 @@ header{
 	font-family: 'Open Sans', sans-serif;
 }
 
+.menu{
+	padding-right: 3.6px;
+}
+
 .arcondicionado {
 	padding: 0 5px;
 	font-size: 20px;
     display: inline; 
 }
 
-#tabela{
+#ementa_tabela{
+	margin-top: 20px;
+	border-width: 2px;
+	border-style: groove;
+	border-color: #D0D0D0;
 	color: white;
-	margin: 0px 20px 0px 2px; 
+	display: inline-block;
 	background: url(../resources/menu-background.jpg) center;
 }
 
-#tabela_titulo{
+.tabela_titulo{
 	color: white;
 	font-size: 18px;
-	margin: 0px 20px 0px 2px;
-	padding-left: 80px;
+	padding-bottom: 10px;
+	text-align: center;
 }
+
+.col1{
+	padding-left: 80px;
+	padding-right: 90px;
+}
+
 
 body{
 	background: url(../resources/tabletop-homescreen.png) center;

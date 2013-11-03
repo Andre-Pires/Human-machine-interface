@@ -1,0 +1,1 @@
+Interactive bar table webapp in HTML/CSS and JavaScript
