@@ -30,13 +30,13 @@
 		}
 		
 
-// variavel estado dos menus
-toggle = 0; 
+// funcao de estado dos menus do barista
 
 		function switchMenus(){			
 			
 
-			if (!toggle) {
+			if (document.getElementById('barista').style.display != "none") {
+
 				document.getElementById('fillerdiv').className = "grid_4";
 				document.getElementById('barista').style.display="none";
 				document.getElementById('ementa').style.display="inline";
@@ -44,7 +44,6 @@ toggle = 0;
 				document.getElementById('eventos').style.display="inline";
 				document.getElementById('talao').style.display="inline";
 				document.getElementById('musica').style.display="inline";	
-				toggle=1;
 			}else{
 				document.getElementById('fillerdiv').className = "grid_7";
 				document.getElementById('ementa').style.display="none";
@@ -53,7 +52,6 @@ toggle = 0;
 				document.getElementById('talao').style.display="none";
 				document.getElementById('musica').style.display="none";
 				document.getElementById('barista').style.display="inline";
-				toggle=0;
 			};
 
 		}
@@ -80,4 +78,25 @@ temperatura = 20;
 			{
 			document.getElementById('temperatura').innerHTML = --temperatura + "°C";
 			};
+		}
+
+// funcao da Ementa
+		function switchEmenta(){			
+			
+
+			if (document.getElementById('ementa_tabela').style.display == "none") {
+				document.getElementById('ementa_tabela').style.display="inline";
+			}else{
+				document.getElementById('ementa_tabela').style.display="none";
+			};
+
+		}
+
+// 1 - ementa, 2 - jogos, 3 - eventos, 4 - talao, 5 - musica
+		function checkMenusOpen(n){			
+			
+			if(n != 1){
+				document.getElementById('ementa_tabela').style.display="none";
+			}
+
 		}
