@@ -17,18 +17,41 @@ header{
 	margin-left:auto; margin-right:0px;
 }
 
+.titulo_ementa{
+	font-size: 22px;
+}
+
+.menos.arcondicionado{
+	font-size: 30px;
+	color: #3366FF;
+}
+
+.mais.arcondicionado{
+	font-size: 30px;
+	color: #E60000;
+}
+
 .menu{
 	padding-right: 3.6px;
 }
 
 .arcondicionado {
-	padding: 0 5px;
+	padding: 7px 5px;
 	font-size: 20px;
     display: inline; 
 }
 
 #ementa_tabela{
 	margin-top: 20px;
+	border-width: 2px;
+	border-style: groove;
+	border-color: #D0D0D0;
+	color: white;
+	display: inline-block;
+	background: url(../resources/menu-background.jpg) center;
+}
+
+#musica_tabela{
 	border-width: 2px;
 	border-style: groove;
 	border-color: #D0D0D0;
@@ -44,12 +67,23 @@ header{
 	text-align: center;
 }
 
+.mtabela_titulo{
+	color: white;
+	font-size: 24px;
+}
+
 .col1{
-	padding-left: 80px;
 	padding-right: 90px;
 }
 
+hr { display: block; height: 1px;
+    border: 0; border-top: 1px solid #39bcd8;
+    margin: 1em 0; padding: 0; }
 
 body{
 	background: url(../resources/tabletop-homescreen.png) center;
 }
+
+
+
+

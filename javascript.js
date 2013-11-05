@@ -28,7 +28,7 @@
 				document.getElementById('ementa').style.display="inline";
 				document.getElementById('jogos').style.display="inline";
 				document.getElementById('eventos').style.display="inline";
-				document.getElementById('talao').style.display="inline";
+				document.getElementById('conta').style.display="inline";
 				document.getElementById('musica').style.display="inline";	
 			}else{
 				document.getElementById('fillerdiv').className = "grid_6";
@@ -36,7 +36,7 @@
 				document.getElementById('ementa').style.display="none";
 				document.getElementById('jogos').style.display="none";
 				document.getElementById('eventos').style.display="none";
-				document.getElementById('talao').style.display="none";
+				document.getElementById('conta').style.display="none";
 				document.getElementById('musica').style.display="none";
 				document.getElementById('barista').style.display="inline";
 			};
@@ -48,23 +48,23 @@ temperatura = 20;
 		function regulaTemp(obj)
 		{
 
-			if (obj.innerHTML=="-" && temperatura < 15) 
+			if (obj.id=="menos" && temperatura < 15) 
 			{
 				alert("Lamentamos mas não é possível manter temperaturas mais baixas.");
 				return;
 			} 
-			else if (obj.innerHTML=="+" && temperatura > 27) 
+			else if (obj.id=="mais" && temperatura > 27) 
 			{
 				alert("Lamentamos mas não é possível manter temperaturas mais altas.");
 				return;
 			};
 
-			if (obj.innerHTML=="+")
+			if (obj.id=="mais")
 			{
 				document.getElementById('temperatura').innerHTML = ++temperatura + "°C";
 				o2.style.display="inline";
 			}
-			else if (obj.innerHTML=="-")
+			else if (obj.id=="menos")
 			{
 				document.getElementById('temperatura').innerHTML = --temperatura + "°C";
 			};
@@ -85,6 +85,21 @@ temperatura = 20;
 
 		}
 
+// funcao das Musicas
+		function switchMusica()
+		{			
+			
+			if (document.getElementById('musica_tabela').style.display == "none") 
+			{
+				document.getElementById('musica_tabela').style.display="inline";
+			}
+			else
+			{
+				document.getElementById('musica_tabela').style.display="none";
+			};
+
+		}
+
 // 1 - ementa, 2 - jogos, 3 - eventos, 4 - talao, 5 - musica
 		function checkMenusOpen(n)
 		{			
@@ -94,9 +109,16 @@ temperatura = 20;
 				document.getElementById('ementa_tabela').style.display="none";
 			}
 
+			if(n != 5)
+			{
+				document.getElementById('musica_tabela').style.display="none";
+			}
+
 		}
 
 		//A implementar
 		function openHelp (obj) {
 			alert("Help: \nIt doesn't do anything yet.");
 		}
+
+

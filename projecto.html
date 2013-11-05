@@ -7,7 +7,6 @@
 	<link rel="stylesheet" type='text/css' href="css/text.css">
 	<link rel="stylesheet" type='text/css' href="css/style.css">
 	<link rel="stylesheet" type='text/css' href="css/960_16_col.css">
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 	<script src="javascript.js"></script>
 </head>
 <body>
@@ -18,11 +17,13 @@
 				<iframe src="http://free.timeanddate.com/clock/i3vk7o26/n133/szw110/szh110/hbw0/hfc000/cf100/hgr0/hwc000/fav0/fiv0/mqcfff/mql15/mqw4/mqd94/mhcfff/mhl15/mhw4/mhd94/mmv0/hhcbbb/hmcddd" width="112" height="112"></iframe>
 				<script type="text/javascript">window.onload=GetClock;</script>
 				<div id="clockbox"></div>
+
+				
 				<br>
 
-				<p class="arcondicionado"	onclick="regulaTemp(this);">-</p>
+				<img src="resources/relogioMENOS.png" id="menos" class="arcondicionado menos"	onclick="regulaTemp(this);">
 				<p class="arcondicionado"	id="temperatura">20°C</p>
-				<p class="arcondicionado"	onclick="regulaTemp(this);">+</p>
+				<img src="resources/relogioMAIS.png" id="mais" class="arcondicionado mais"	onclick="regulaTemp(this);">
 			</aside>
 
 			<div id="mdiv" class="grid_9">
@@ -30,17 +31,22 @@
 				<img id="ementa" class="menu" onClick="switchEmenta(); checkMenusOpen(1);" src="resources/ementa_button.png"	alt="ementa" style="display:none">
 				<img id="jogos" class="menu" onClick="switchMenus(); checkMenusOpen(2);" src="resources/jogos_button.png"	alt="jogos" style="display:none">
 				<img id="eventos" class="menu" onClick="switchMenus(); checkMenusOpen(3);" src="resources/eventos_button.png"	alt="eventos" style="display:none">
-				<img id="talao" class="menu" onClick="switchMenus(); checkMenusOpen(4);" src="resources/talao_button.png"	alt="talao" style="display:none">
-				<img id="musica" class="menu" onClick="switchMenus(); checkMenusOpen(5);" src="resources/musica_button.png"	alt="musica" style="display:none"></div>
-			<div id="ajuda" class="grid_1" onclick="openHelp(this)"><img src="resources/lifebuoy-blue.png" alt="ajuda"  width="100%" height="100%"><br>Ajuda</div>
+				<img id="conta" class="menu" onClick="switchMenus(); checkMenusOpen(4);" src="resources/conta_button.png"	alt="conta" style="display:none">
+				<img id="musica" class="menu" onClick="switchMusica(); checkMenusOpen(5);" src="resources/musica_button.png"	alt="musica" style="display:none"></div>
+			<div id="ajuda" class="grid_1" onclick="openHelp(this)">
+				<img src="resources/lifebuoy-blue.png" alt="ajuda"  width="100%" height="100%">
+				<br>Ajuda</div>
 
 		</header>
 
-		<div id="ementa_tabela" class="grid_9" style="display:none">
-
-			<br>
+		<div id="ementa_tabela" class="grid_9" style="display:none" align="center">
+			
+			
+			<span class="titulo_ementa">Ementa</span>
 
 			<table id="tabela">
+
+				<!-- <tr align="center" class="titulo_ementa">Ementa<hr></tr> -->
 
 				<tr>
 					<th class="tabela_titulo col1">Bebidas</th>
@@ -49,7 +55,7 @@
 
 				<tr>
 					<th class="tabela_titulo col1">
-						<hr></th>
+						<hr color: "#39bcd8"></th>
 					<th class="tabela_titulo">
 						<hr></th>
 				</tr>
@@ -75,6 +81,27 @@
 				</tr>
 			</table>
 		</div>
+
+		<div id="musica_tabela" class="grid_9" style="display:none" align="center">
+
+			<table id="m_tabela">
+
+				<tr class="mtabela_titulo">Músicas<br></tr>
+
+				<tr class="mtabela_titulo">Lista de Reprodução<hr></tr>
+
+				<tr>Café - Preço: 0.5€</tr>
+
+				<tr>Cerveja (33cl) - Preço: 1€<hr></tr>
+
+				<tr class="mtabela_titulo"><hr>Músicas disponiveis<hr></tr>
+
+				<tr>Sangria (33cl) - Preço: 2€</tr>
+
+				<tr>Shot - Preço: 2€</tr>
+			</table>
+		</div>
+
 	</div>
 </body>
 </html>
