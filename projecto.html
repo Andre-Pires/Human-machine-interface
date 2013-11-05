@@ -18,12 +18,16 @@
 				<script type="text/javascript">window.onload=GetClock;</script>
 				<div id="clockbox"></div>
 
-				
 				<br>
 
 				<img src="resources/relogioMENOS.png" id="menos" class="arcondicionado menos"	onclick="regulaTemp(this);">
 				<p class="arcondicionado"	id="temperatura">20°C</p>
 				<img src="resources/relogioMAIS.png" id="mais" class="arcondicionado mais"	onclick="regulaTemp(this);">
+
+				<div>A tocar: <br> <script type="text/javascript">window.onload=carregaTocar();</script>
+				</div>
+
+
 			</aside>
 
 			<div id="mdiv" class="grid_9">
@@ -33,6 +37,7 @@
 				<img id="eventos" class="menu" onClick="switchMenus(); checkMenusOpen(3);" src="resources/eventos_button.png"	alt="eventos" style="display:none">
 				<img id="conta" class="menu" onClick="switchMenus(); checkMenusOpen(4);" src="resources/conta_button.png"	alt="conta" style="display:none">
 				<img id="musica" class="menu" onClick="switchMusica(); checkMenusOpen(5);" src="resources/musica_button.png"	alt="musica" style="display:none"></div>
+			
 			<div id="ajuda" class="grid_1" onclick="openHelp(this)">
 				<img src="resources/lifebuoy-blue.png" alt="ajuda"  width="100%" height="100%">
 				<br>Ajuda</div>
@@ -40,66 +45,60 @@
 		</header>
 
 		<div id="ementa_tabela" class="grid_9" style="display:none" align="center">
-			
-			
-			<span class="titulo_ementa">Ementa</span>
 
-			<table id="tabela">
+			<h1>Ementa</h1>
 
-				<!-- <tr align="center" class="titulo_ementa">Ementa<hr></tr> -->
+			<div class="grid_4">
+				<h3>Bebidas</h3>
 
-				<tr>
-					<th class="tabela_titulo col1">Bebidas</th>
-					<th class="tabela_titulo">Comida</th>
-				</tr>
+				<ul>
+					<li>Café - Preço: 0.5€</li>
+					<li>Cerveja (33cl) - Preço: 1€</li>
+					<li>Sangria (33cl) - Preço: 2€</li>
+					<li>Shot - Preço: 2€</li>
+				</ul>
+			</div>
 
-				<tr>
-					<th class="tabela_titulo col1">
-						<hr color: "#39bcd8"></th>
-					<th class="tabela_titulo">
-						<hr></th>
-				</tr>
+			<div class="grid_4" style="padding-left:20px;">
+				<h3>Comida</h3>
+				<ul>
+					<li>Amendoins - Preço: 1€</li>
+					<li>Tosta Mista - Preço: 2.5€</li>
+					<li>Hamburguer - Preço: 5€</li>
+					<li>Bitoque - Preço: 7€</li>
+				</ul>
+			</div>
 
-				<tr>
-					<th class="col1">Café - Preço: 0.5€</th>
-					<th>Amendoins - 1€</th>
-				</tr>
-
-				<tr>
-					<td class="col1">Cerveja (33cl) - Preço: 1€</td>
-					<td>Tosta Mista - 2.5€</td>
-				</tr>
-
-				<tr>
-					<td class="col1">Sangria (33cl) - Preço: 2€</td>
-					<td>Hamburguer - 5€</td>
-				</tr>
-
-				<tr>
-					<td class="col1">Shot - Preço: 2€</td>
-					<td>Bitoque - 7€</td>
-				</tr>
-			</table>
 		</div>
 
 		<div id="musica_tabela" class="grid_9" style="display:none" align="center">
 
-			<table id="m_tabela">
+			<h1>Músicas</h1>
+			<h3>Lista de Reprodução</h3>
 
-				<tr class="mtabela_titulo">Músicas<br></tr>
+			<ul>
+				<li id="playing" class="musicas" style="text-align:left" >Hans Zimmer - Time (Inception OST) 
+				<br> Duration : 4:31</li>
+			</ul>
 
-				<tr class="mtabela_titulo">Lista de Reprodução<hr></tr>
+			<h3>Músicas disponíveis</h3>
 
-				<tr>Café - Preço: 0.5€</tr>
+			<ul>
+				<li class="musicas" style="text-align:left" >
+					Hans Zimmer - Time (Inception OST)
+					<img id="pic1"  class="votar_bt" alt="votar" src="resources/musica_button.png" onclick="votarMusica('pic1');" width="13%" height="13%">
+					<br>Duration : 4:31</li>
 
-				<tr>Cerveja (33cl) - Preço: 1€<hr></tr>
+				<li class="musicas" style="text-align:left" >
+					Eric Clapton - Cocaine
+					<img id="pic2" class="votar_bt" alt="votar" src="resources/musica_button.png" onclick="votarMusica('pic2');" width="13%" height="13%">
+					<br>Duration : 6:24</li>
 
-				<tr class="mtabela_titulo"><hr>Músicas disponiveis<hr></tr>
-
-				<tr>Sangria (33cl) - Preço: 2€</tr>
-
-				<tr>Shot - Preço: 2€</tr>
-			</table>
+				<li class="musicas" style="text-align:left" >
+					Kavinsky - Nightcall
+					<img id="pic3" class="votar_bt" alt="votar" src="resources/musica_button.png" onclick="votarMusica('pic3');" width="13%" height="13%">
+					<br>Duration : 3:45</li>
+			</ul>
 		</div>
 
 	</div>

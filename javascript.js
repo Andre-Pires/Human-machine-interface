@@ -62,7 +62,6 @@ temperatura = 20;
 			if (obj.id=="mais")
 			{
 				document.getElementById('temperatura').innerHTML = ++temperatura + "°C";
-				o2.style.display="inline";
 			}
 			else if (obj.id=="menos")
 			{
@@ -117,8 +116,35 @@ temperatura = 20;
 		}
 
 		//A implementar
-		function openHelp (obj) {
+		function openHelp (obj) 
+		{
 			alert("Help: \nIt doesn't do anything yet.");
 		}
+
+
+
+		function votarMusica(name)
+		{
+
+			if (document.getElementById(name).src.indexOf("resources/musica_button.png") != -1)
+			{
+				document.getElementById(name).src = 'resources/jogos_button.png';
+			} 
+			else
+			{
+				document.getElementById(name).src = 'resources/musica_button.png';	
+			};
+
+
+		}
+
+
+
+		function carregaTocar () {
+
+			document.write(document.getElementById("playing").innerHTML);
+		}
+
+
 
 
