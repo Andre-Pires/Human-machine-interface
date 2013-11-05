@@ -1,7 +1,12 @@
 // para criar a data e possivelmente o relogio
-
+		/*
 		tday  =new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday");
 		tmonth=new Array("January","February","March","April","May","June","July","August","September","October","November","December");
+		*/
+
+		//portugues
+		tday  =new Array("Domingo","Segunda-feira","Terça-feira","Quarta-feira","Quinta-feira","Sexta-feira","Sábado");
+		tmonth=new Array("Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro");
 
 		function GetClock()
 		{
@@ -27,7 +32,7 @@
 				document.getElementById('barista').style.display="none";
 				document.getElementById('ementa').style.display="inline";
 				document.getElementById('jogos').style.display="inline";
-				document.getElementById('eventos').style.display="inline";
+				document.getElementById('voltar').style.display="inline";
 				document.getElementById('conta').style.display="inline";
 				document.getElementById('musica').style.display="inline";	
 			}else{
@@ -35,7 +40,7 @@
 				document.getElementById('mdiv').className = "grid_9";
 				document.getElementById('ementa').style.display="none";
 				document.getElementById('jogos').style.display="none";
-				document.getElementById('eventos').style.display="none";
+				document.getElementById('voltar').style.display="none";
 				document.getElementById('conta').style.display="none";
 				document.getElementById('musica').style.display="none";
 				document.getElementById('barista').style.display="inline";
@@ -125,14 +130,16 @@ temperatura = 20;
 
 		function votarMusica(name)
 		{
-
-			if (document.getElementById(name).src.indexOf("resources/musica_button.png") != -1)
+			if (document.getElementById(name).src.indexOf("resources/votar_button.png") != -1)
 			{
-				document.getElementById(name).src = 'resources/jogos_button.png';
+				document.getElementById('pic1').src = 'resources/votar_button.png';
+				document.getElementById('pic2').src = 'resources/votar_button.png';
+				document.getElementById('pic3').src = 'resources/votar_button.png';
+				document.getElementById(name).src = 'resources/votado_button.png';
 			} 
 			else
 			{
-				document.getElementById(name).src = 'resources/musica_button.png';	
+				document.getElementById(name).src = 'resources/votar_button.png';	
 			};
 
 
@@ -142,7 +149,7 @@ temperatura = 20;
 
 		function carregaTocar () {
 
-			document.write(document.getElementById("playing").innerHTML);
+			dump(document.getElementById("playing").innerHTML);
 		}
 
 

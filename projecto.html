@@ -7,6 +7,7 @@
 	<link rel="stylesheet" type='text/css' href="css/text.css">
 	<link rel="stylesheet" type='text/css' href="css/style.css">
 	<link rel="stylesheet" type='text/css' href="css/960_16_col.css">
+	<script src="jquery.min.js"></script>
 	<script src="javascript.js"></script>
 </head>
 <body>
@@ -23,9 +24,11 @@
 				<img src="resources/relogioMENOS.png" id="menos" class="arcondicionado menos"	onclick="regulaTemp(this);">
 				<p class="arcondicionado"	id="temperatura">20°C</p>
 				<img src="resources/relogioMAIS.png" id="mais" class="arcondicionado mais"	onclick="regulaTemp(this);">
-
-				<div>A tocar: <br> <script type="text/javascript">window.onload=carregaTocar();</script>
-				</div>
+				
+				<div>
+				<h5>A tocar: </h5>
+				<span id="tocar"></span></div>
+				
 
 
 			</aside>
@@ -33,14 +36,20 @@
 			<div id="mdiv" class="grid_9">
 				<img id="barista" class="menu" onClick="switchMenus();" src="resources/barista_button.png"	alt="barista">
 				<img id="ementa" class="menu" onClick="switchEmenta(); checkMenusOpen(1);" src="resources/ementa_button.png"	alt="ementa" style="display:none">
-				<img id="jogos" class="menu" onClick="switchMenus(); checkMenusOpen(2);" src="resources/jogos_button.png"	alt="jogos" style="display:none">
-				<img id="eventos" class="menu" onClick="switchMenus(); checkMenusOpen(3);" src="resources/eventos_button.png"	alt="eventos" style="display:none">
 				<img id="conta" class="menu" onClick="switchMenus(); checkMenusOpen(4);" src="resources/conta_button.png"	alt="conta" style="display:none">
-				<img id="musica" class="menu" onClick="switchMusica(); checkMenusOpen(5);" src="resources/musica_button.png"	alt="musica" style="display:none"></div>
+				<img id="musica" class="menu" onClick="switchMusica(); checkMenusOpen(5);" src="resources/musica_button.png"	alt="musica" style="display:none">
+				<img id="jogos" class="menu" onClick="switchMenus(); checkMenusOpen(2);" src="resources/jogos_button.png"	alt="jogos" style="display:none">
+				<img id="voltar" class="menu" onClick="switchMenus(); checkMenusOpen(3);" src="resources/voltar_button.png"	alt="voltar" style="display:none"></div>
 			
-			<div id="ajuda" class="grid_1" onclick="openHelp(this)">
-				<img src="resources/lifebuoy-blue.png" alt="ajuda"  width="100%" height="100%">
-				<br>Ajuda</div>
+			<div id="ajuda" class="grid_1" style="float:right">
+				<img src="resources/lifebuoy-blue.png" onClick="openHelp(this)" alt="ajuda"  width="100%" height="100%">
+				<br><p id="cenas" onClick="openHelp(this)">Ajuda</p>
+
+				<div id="conta_talao"	style="float:left">
+					<h6 id="conta_titulo">Conta <hr></h6>
+					<p>Total: 	0€</p>
+				</div>
+			</div>
 
 		</header>
 
@@ -51,7 +60,7 @@
 			<div class="grid_4">
 				<h3>Bebidas</h3>
 
-				<ul>
+				<ul style="text-align:left" >
 					<li>Café - Preço: 0.5€</li>
 					<li>Cerveja (33cl) - Preço: 1€</li>
 					<li>Sangria (33cl) - Preço: 2€</li>
@@ -61,7 +70,7 @@
 
 			<div class="grid_4" style="padding-left:20px;">
 				<h3>Comida</h3>
-				<ul>
+				<ul style="text-align:left" >
 					<li>Amendoins - Preço: 1€</li>
 					<li>Tosta Mista - Preço: 2.5€</li>
 					<li>Hamburguer - Preço: 5€</li>
@@ -78,26 +87,28 @@
 
 			<ul>
 				<li id="playing" class="musicas" style="text-align:left" >Hans Zimmer - Time (Inception OST) 
-				<br> Duration : 4:31</li>
+				<br> Duração : 4:31</li>
 			</ul>
+			
+			<script type="text/javascript">$("#tocar").html($("#playing").clone());</script>
+			
+			<h3>Músicas Disponíveis</h3>
 
-			<h3>Músicas disponíveis</h3>
-
-			<ul>
+			<ul class="grid_8">
 				<li class="musicas" style="text-align:left" >
 					Hans Zimmer - Time (Inception OST)
-					<img id="pic1"  class="votar_bt" alt="votar" src="resources/musica_button.png" onclick="votarMusica('pic1');" width="13%" height="13%">
-					<br>Duration : 4:31</li>
+                    <img id="pic1"  class="votar_bt" alt="votar" src="resources/votar_button.png" onClick="votarMusica('pic1');" width="13%" height="13%"><img id="15v"  class="nvotos" alt="15 votos" src="resources/15votos.png" width="13%" height="13%">
+					<br>Duração : 4:31</li>
 
 				<li class="musicas" style="text-align:left" >
 					Eric Clapton - Cocaine
-					<img id="pic2" class="votar_bt" alt="votar" src="resources/musica_button.png" onclick="votarMusica('pic2');" width="13%" height="13%">
-					<br>Duration : 6:24</li>
+					<img id="pic2" class="votar_bt" alt="votar" src="resources/votar_button.png" onClick="votarMusica('pic2');" width="13%" height="13%"><img id="10v"  class="nvotos" alt="10 votos" src="resources/10votos.png" width="13%" height="13%">
+					<br>Duração : 6:24</li>
 
 				<li class="musicas" style="text-align:left" >
 					Kavinsky - Nightcall
-					<img id="pic3" class="votar_bt" alt="votar" src="resources/musica_button.png" onclick="votarMusica('pic3');" width="13%" height="13%">
-					<br>Duration : 3:45</li>
+					<img id="pic3" class="votar_bt" alt="votar" src="resources/votar_button.png" onClick="votarMusica('pic3');" width="13%" height="13%"><img id="8v"  class="nvotos" alt="8 votos" src="resources/8votos.png" width="13%" height="13%">
+					<br>Duração : 3:45</li>
 			</ul>
 		</div>
 
