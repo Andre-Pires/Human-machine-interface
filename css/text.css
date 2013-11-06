@@ -59,11 +59,10 @@ ol {
 }
 
 ul {
-  list-style: disc;
+  list-style: none;
 }
 
 li {
-  margin-left: 30px;
 }
 
 p,

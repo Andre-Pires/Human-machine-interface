@@ -147,11 +147,5 @@ temperatura = 20;
 
 
 
-		function carregaTocar () {
-
-			dump(document.getElementById("playing").innerHTML);
-		}
-
-
 
 
