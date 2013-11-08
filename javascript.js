@@ -26,9 +26,7 @@
 
 			if (document.getElementById('barista').style.display != "none") 
 			{
-
-				document.getElementById('fillerdiv').className = "grid_4";
-				document.getElementById('mdiv').className = "grid_11";
+				document.getElementById('menu').style.paddingLeft="7%";
 				document.getElementById('barista').style.display="none";
 				document.getElementById('ementa').style.display="inline";
 				document.getElementById('jogos').style.display="inline";
@@ -36,8 +34,7 @@
 				document.getElementById('conta').style.display="inline";
 				document.getElementById('musica').style.display="inline";	
 			}else{
-				document.getElementById('fillerdiv').className = "grid_6";
-				document.getElementById('mdiv').className = "grid_9";
+				document.getElementById('menu').style.paddingLeft="0%";	
 				document.getElementById('ementa').style.display="none";
 				document.getElementById('jogos').style.display="none";
 				document.getElementById('voltar').style.display="none";
@@ -80,7 +77,7 @@ temperatura = 20;
 			
 			if (document.getElementById('ementa_tabela').style.display == "none") 
 			{
-				document.getElementById('ementa_tabela').style.display="inline";
+				document.getElementById('ementa_tabela').style.display="block";
 			}
 			else
 			{
@@ -95,7 +92,7 @@ temperatura = 20;
 			
 			if (document.getElementById('musica_tabela').style.display == "none") 
 			{
-				document.getElementById('musica_tabela').style.display="inline";
+				document.getElementById('musica_tabela').style.display="block";
 			}
 			else
 			{
