@@ -35,7 +35,7 @@ li{
 }
 
 .min-width{
-	min-width: 1130px;
+	min-width: 1200px;
 }
 
 .clear-padding{
@@ -83,8 +83,8 @@ li{
 
 .musicas{
 	margin-left: 0;
-	padding-top: 	5%;
-	padding-bottom: 4%;
+	padding-top: 	2%;
+	padding-bottom: 2%;
 }
 
 .votar_bt{
@@ -110,6 +110,7 @@ li{
 
 #ementa_tabela{
 	margin-top: 20px;
+	padding-bottom: 4%;
 	border-width: 2px;
 	border-style: groove;
 	border-color: #D0D0D0;
@@ -126,20 +127,5 @@ li{
 	background: url(../resources/menu-background.jpg) center;
 }
 
-.tabela_titulo{
-	color: white;
-	font-size: 18px;
-	padding-bottom: 10px;
-	text-align: center;
-}
-
-.mtabela_titulo{
-	color: white;
-	font-size: 24px;
-}
-
-.col1{
-	padding-right: 90px;
-}
 
 
