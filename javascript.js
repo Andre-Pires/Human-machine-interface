@@ -52,12 +52,14 @@ temperatura = 20;
 
 			if (obj.id=="menos" && temperatura < 15) 
 			{
-				alert("Lamentamos mas não é possível manter temperaturas mais baixas.");
+				document.getElementById('mensagemAC').innerHTML = "Temperatura minima atingida.";
+				document.getElementById('AC_msg_container').style.display = "block";
 				return;
 			} 
 			else if (obj.id=="mais" && temperatura > 27) 
 			{
-				alert("Lamentamos mas não é possível manter temperaturas mais altas.");
+				document.getElementById('mensagemAC').innerHTML = "Temperatura máxima atingida.";
+				document.getElementById('AC_msg_container').style.display = "block";
 				return;
 			};
 
@@ -140,4 +142,8 @@ temperatura = 20;
 			};
 
 
+		}
+
+		function escondeMensagem () {
+			document.getElementById('AC_msg_container').style.display="none";
 		}

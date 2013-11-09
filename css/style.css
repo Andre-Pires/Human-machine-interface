@@ -8,7 +8,6 @@ h1{
 }
 
 h3{
-	clear: both;
 }
 
 
@@ -35,7 +34,7 @@ li{
 }
 
 .min-width{
-	min-width: 1200px;
+/*reparar a min width do site */		
 }
 
 .clear-padding{
@@ -70,9 +69,9 @@ li{
 }
 
 .ajuda{
+	padding-left: 4%;
 	color: #fff;
 	font-size: 12pt;
-	margin-left: 10%; margin-right:0px;;
 }
 
 #fillerdiv{
@@ -80,15 +79,22 @@ li{
 	margin-left: 6%;
 }
 
+#mensagemAC{
+	vertical-align: top;
+	font-size: 10pt;
+	padding: 2% 2% 2% 2%;
+}
 
 .musicas{
-	margin-left: 0;
+	text-align:left;
+	padding-left: 4%;
 	padding-top: 	2%;
 	padding-bottom: 2%;
 }
 
 .votar_bt{
 	padding-right: 20px;
+	text-align: right;
 	float: right;
 }
 
