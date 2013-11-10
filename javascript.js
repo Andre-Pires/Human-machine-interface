@@ -178,6 +178,16 @@ temperatura = 20;
 			return number;
 		}
 
+		function limpaPedidos (){
+
+			document.getElementById('area_arrasto').innerHTML = '<p style="float:right; padding-right:5%">\
+						<span id="total_compra">Total: 0€</span>\
+						<span id="total_itens">Qtd: 0</span>\
+						</p>';
+
+			document.getElementById('removeItens').className += " pure-button-disabled";
+		}
+
 
 /* ------------------------------ Drag 'n Drop jQuery -----------------------*/
 

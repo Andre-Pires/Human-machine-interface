@@ -63,7 +63,7 @@
 
 					<div id="ementa_tabela" class="pure-u-5-8" style="margin-left:7%; " align="center">
 
-						<h1  style="margin: 0 auto 0 37%;" class="clear-padding" align="left" >Ementa</h1>
+						<h1  style="margin: 0 auto 0 40%;" class="clear-padding" align="left" >Ementa</h1>
 
 						<div class="pure-u-2-5 align-left">
 							<h3 style="padding-left:15%">Bebidas</h3>
@@ -88,13 +88,18 @@
 					</div>
 
 					<!-- AREA ARRASTO -->
-					<div align="center">
-							<h3 style="padding-left:14%; color:#fff;" align="left">Arraste para a área abaixo para encomendar</h3>
-						<div class="pure-u-2-5" align="left" style="margin-right:24%; margin-bottom:3%; padding-left:3%;">
-							<button align="left" onclick="limpaPedidos();" class="pure-button pure-button-xsmall">Remover pedidos</button>
-							<button align="left"class="pure-button pure-button-xsmall">Fazer Pedidos</button>
+					<div  class="pure-u-5-8" style="margin-left:7%; " align="center">
+
+						<div id="dialog" title="Limpar o pedido?">
+						  <p>Tem a certeza que quer apagar os itens já selecionados?</p>
 						</div>
-						<div id="area_arrasto" class="pure-u-2-5 sortable" align="left" style="margin-right:23%; padding-left:3%;">
+
+							<h3 style="color:#fff;" onclick="AskAndSubmit();">Arraste para a área abaixo para encomendar</h3>
+						<div class="pure-u-5-8" align="center" style="margin-bottom:3%;">
+							<button id="removeItens" align="left" style="margin-right:4%;" class="pure-button pure-button-disabled pure-button-xsmall">Remover itens</button>
+							<button id="fazPedido" align="left"class="pure-button pure-button-xsmall">Fazer Pedido</button>
+						</div>
+						<div id="area_arrasto" class="pure-u-5-8 sortable stitched" align="left" style="padding-left:3%;">
 						<p style="float:right; padding-right:5%">
 						<span id="total_compra">Total: 0€</span>
 						<span id="total_itens">Qtd: 0</span>
@@ -156,8 +161,9 @@
 </body>
 	<script type="text/javascript">window.onload=GetClock;</script>
 	<script type="text/javascript">$("#playing").clone().appendTo($("#tocar"));</script>
-	<!-- Funciona tudo excepto o replace !! -->
+	<!-- Actualiza o total e qtd -->
 	<script type="text/javascript">
+	var old = 0;
 	$( "#area_arrasto" ).bind(
 	{
 		  mouseout: function()
@@ -175,12 +181,41 @@
 			             ++itens;
 			        }			       
 			    });
-			    $(this).find('#total_compra').html("Total:" + sum + "€");
-			    $(this).find('#total_itens').html("Qtd:" + itens);
+			    if (old < sum) {
+			    document.getElementById('removeItens').className = "pure-button pure-button-xsmall";};
+			    $(this).find('#total_compra').html("Total: " + sum + "€");
+			    $(this).find('#total_itens').html("Qtd: " + itens);
 			    $("#total_conta").html(sum + "€");
 			});
   		  }
 	});
 	</script>
-	<!-- Nao apagar -->
+	<script>
+  $(function() {
+    $( "#dialog" ).dialog({
+      autoOpen: false,
+      show: {
+        effect: "fade",
+        duration: 1000
+      },
+      hide: {
+        effect: "fade",
+        duration: 1000
+      },
+      buttons: {
+        "Apagar itens": function() {
+          limpaPedidos();
+          $( this ).dialog( "close" );
+        },
+        "Cancelar": function() {
+          $( this ).dialog( "close" );
+        }
+      }
+    });
+ 
+    $( "#removeItens" ).click(function() {
+      $( "#dialog" ).dialog( "open" );
+    });
+  });
+  </script>
 </html>

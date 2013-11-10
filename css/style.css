@@ -139,11 +139,17 @@ li{
 }
 
 #area_arrasto {
-	color: #FFFFFF;
-	border-style: groove;
-	border-color: #D0D0D0;
-	background: #58585C;
 	padding-top: 4%;
+}
+
+.stitched {
+   padding: 4px;
+   margin: 2px;
+   background: #808080 ;
+   color: #fff;
+   font-size: 13pt;
+   border: 2px dashed #fff;
+   border-radius: 2px;  
 }
 
 
