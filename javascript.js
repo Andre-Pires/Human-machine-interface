@@ -52,13 +52,15 @@ temperatura = 20;
 
 			if (obj.id=="menos" && temperatura < 15) 
 			{
-				document.getElementById('mensagemAC').innerHTML = "Temperatura minima atingida.";
+				document.getElementById('mensagemAC').innerHTML = "Temperatura mínima atingida. \n (Toque para fechar)";
+				document.getElementById('menos').style.display = "none";
 				document.getElementById('AC_msg_container').style.display = "block";
 				return;
-			} 
-			else if (obj.id=="mais" && temperatura > 27) 
+			}
+			else if (obj.id=="mais" && temperatura > 27)
 			{
-				document.getElementById('mensagemAC').innerHTML = "Temperatura máxima atingida.";
+				document.getElementById('mensagemAC').innerHTML = "Temperatura máxima atingida. \n (Toque para fechar)";
+				document.getElementById('mais').style.display = "none";
 				document.getElementById('AC_msg_container').style.display = "block";
 				return;
 			};
@@ -66,10 +68,14 @@ temperatura = 20;
 			if (obj.id=="mais")
 			{
 				document.getElementById('temperatura').innerHTML = ++temperatura + "°C";
+				document.getElementById('menos').style.display = "inline";
+				document.getElementById('AC_msg_container').style.display = "none";
 			}
 			else if (obj.id=="menos")
 			{
 				document.getElementById('temperatura').innerHTML = --temperatura + "°C";
+				document.getElementById('mais').style.display = "inline";
+				document.getElementById('AC_msg_container').style.display = "none";
 			};
 		}
 
@@ -77,13 +83,13 @@ temperatura = 20;
 		function switchEmenta()
 		{			
 			
-			if (document.getElementById('ementa_tabela').style.display == "none") 
+			if (document.getElementById('wrapper_ementa').style.display == "none") 
 			{
-				document.getElementById('ementa_tabela').style.display="block";
+				document.getElementById('wrapper_ementa').style.display = "block";
 			}
 			else
 			{
-				document.getElementById('ementa_tabela').style.display="none";
+				document.getElementById('wrapper_ementa').style.display="none";
 			};
 
 		}
@@ -109,7 +115,7 @@ temperatura = 20;
 			
 			if(n != 1)
 			{
-				document.getElementById('ementa_tabela').style.display="none";
+				document.getElementById('wrapper_ementa').style.display="none";
 			}
 
 			if(n != 5)
@@ -126,24 +132,155 @@ temperatura = 20;
 		}
 
 
-
+		var ultimamusica = null;
 		function votarMusica(name)
 		{
+			/*
 			if (document.getElementById(name).src.indexOf("resources/votar_button.png") != -1)
 			{
 				document.getElementById('pic1').src = 'resources/votar_button.png';
 				document.getElementById('pic2').src = 'resources/votar_button.png';
 				document.getElementById('pic3').src = 'resources/votar_button.png';
-				document.getElementById(name).src = 'resources/votado_button.png';
-			} 
+				document.getElementById(name).src   = 'resources/votado_button.png';
+			}
 			else
 			{
 				document.getElementById(name).src = 'resources/votar_button.png';	
 			};
+			*/
+			if (ultimamusica == null)
+			{
+				document.getElementById(name).src = 'resources/votado_button.png';
+				ultimamusica = name;
+				alteraVotos(name, true);	
+			}
+			else if (document.getElementById(name).src.indexOf("resources/votar_button.png") != -1) 
+			{
+				document.getElementById(ultimamusica).src = 'resources/votar_button.png';
+				ultimamusica = name;
+				document.getElementById(name).src = 'resources/votado_button.png';
+				alteraVotos(name, true);
+			} else {
+				document.getElementById(name).src = 'resources/votar_button.png';
+				alteraVotos(name, false);
+			}
+		}
 
 
+		var votos = new Array(15, 10, 9);
+		function alteraVotos (name, novoVoto) {
+			for (i = 0; i < votos.length; ++i) {
+				document.getElementById(votos[i] + 'v').src = 'resources/' + votos[i] +
+				'votos.png';
+			}
+			if (novoVoto) {
+				var pos = name.match(/[0-9]+/);
+				var id =  votos[pos] + 'v';
+				document.getElementById(id).src = 'resources/' + (votos[pos] + 1) +
+					'votos.png';
+			}
 		}
 
 		function escondeMensagem () {
 			document.getElementById('AC_msg_container').style.display="none";
 		}
+
+		function retiraNumero (name) {
+			var string = document.getElementById(name).innerHTML;
+			var number = parseInt(string.match( /:[0-9]+/ ));
+			return number;
+		}
+
+
+/* ------------------------------ Drag 'n Drop jQuery -----------------------*/
+
+/*
+$(function() {
+        /** we set the draggable class to be draggable, we add the containment which will be #boxdemo, so dropable and draggable object cant pass out of this box 
+    $( ".draggable" ).draggable({ 
+        containment:"#boxdemo",
+        revert: "invalid"
+    });
+ 
+    $( ".droppable" ).droppable({
+        /** tolerance:fit means, the moveable object has to be inside the dropable object area 
+        tolerance: 'fit',
+        over: function(event, ui) {
+            /** We add the hoverClass when the moveable object is inside of the dropable object 
+            $('.ui-draggable-dragging').addClass('hoverClass');
+        },
+        out: function(event, ui) {
+            /** We remove the hoverClass when the moveable object is outside of the dropable object area 
+            $('.ui-draggable-dragging').removeClass('hoverClass');
+        },
+        /** This is the drop event, when the draggable object is moved on the top of the dropable object area 
+        drop: function( event, ui ) {
+            $( ".droppable" ).addClass('dropClass');
+        }
+    });
+});		
+
+
+$(document).ready( function() {
+  $('#ClickWordList li').click(function() { 
+    $("#txtMessage").insertAtCaret($(this).text());
+    return false
+  });
+  $("#DragWordList li").draggable({helper: 'clone'});
+  $(".txtDropTarget").droppable({
+    accept: "#DragWordList li",
+    drop: function(ev, ui) {
+      $(this).insertAtCaret(ui.draggable.text());
+    }
+  });
+});
+ 
+$.fn.insertAtCaret = function (myValue) {
+  return this.each(function(){
+  //IE support
+  if (document.selection) {
+    this.focus();
+    sel = document.selection.createRange();
+    sel.text = myValue;
+    this.focus();
+  }
+  //MOZILLA / NETSCAPE support
+  else if (this.selectionStart || this.selectionStart == '0') {
+    var startPos = this.selectionStart;
+    var endPos = this.selectionEnd;
+    var scrollTop = this.scrollTop;
+    this.value = this.value.substring(0, startPos)+ myValue+ this.value.substring(endPos,this.value.length);
+    this.focus();
+    this.selectionStart = startPos + myValue.length;
+    this.selectionEnd = startPos + myValue.length;
+    this.scrollTop = scrollTop;
+  } else {
+    this.value += myValue;
+    this.focus();
+  }
+  });
+}; */
+
+ total = 1;
+
+  $(function() {
+    $( ".sortable" ).sortable({
+      revert: true
+    });
+    $( ".draggable" ).draggable({
+      connectToSortable: ".sortable",
+      helper: "clone",
+      revert: "invalid"
+    });
+    // $( ".droppable" ).droppable({
+    //   revert: true,
+    //   drop: function (event, ui) {
+    //   		console.info( ui.draggable.find('li').attr('id') );
+    //   		var str = document.getElementById( ui.draggable.attr('id') ).innerHTML;
+    //   		var preco = parseInt( str );
+    //   		total += preco;
+    //   		document.getElementById( $(ui.draggable).id ).text(total);
+    //   	}
+    // });
+    $( "ul, li" ).disableSelection();
+  });

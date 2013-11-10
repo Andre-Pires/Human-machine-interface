@@ -133,5 +133,50 @@ li{
 	background: url(../resources/menu-background.jpg) center;
 }
 
+#area_arrasto {
+	color: #FFFFFF;
+	border-style: groove;
+	border-color: #D0D0D0;
+	background: #58585C;
+	padding-top: 4%;
+	padding-bottom: 4%;
+	margin-top: 5%;
+}
 
 
+
+/* ------------------------------ Drag 'n Drop jQuery -----------------------*/
+
+
+/** This is the wrapper box that the drag and drop box is not allowed to pass outside of this box.**/
+#boxdemo{
+    width:400px;
+    height:200px;
+    position:relative;
+    padding:10px;
+    border:solid 1px blue;
+}
+ 
+/** style for droppable content **/
+.droppable { 
+}
+ 
+/** style for draggable content **/
+.draggable{ 
+}
+ 
+/** style when an object is moving hover **/
+.hoverClass{
+    background:#339bfb;
+    color:#ffffff;
+}
+ 
+/** style for droppable when the moveable object is dropped **/
+.dropClass{
+    background:#55d532;
+}
+ 
+/** clear the float used by other draggable and moveable objects **/
+.clear{
+    clear:both;
+}

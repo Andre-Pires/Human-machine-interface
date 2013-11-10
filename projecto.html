@@ -22,21 +22,22 @@
 
 			<aside id="fillerdiv" class="pure-u-1-5">
 				<iframe src="http://free.timeanddate.com/clock/i3vk7o26/n133/szw110/szh110/hbw0/hfc000/cf100/hgr0/hwc000/fav0/fiv0/mqcfff/mql15/mqw4/mqd94/mhcfff/mhl15/mhw4/mhd94/mmv0/hhcbbb/hmcddd" width="112" height="112" style="border-style:none;"></iframe>
+				<!-- RELOGIO -->
 				<div style="padding-top:2%; padding-down:25%" id="clockbox"></div>
 
 				<br>
 
+				<!-- AR CONDICIONADO -->
 				<img src="resources/relogioMENOS.png" id="menos" class="arcondicionado"	onclick="regulaTemp(this);">
 				<p class="arcondicionado"	id="temperatura">20°C</p>
 				<img src="resources/relogioMAIS.png" id="mais" class="arcondicionado"	onclick="regulaTemp(this);">
 
 				<br>
-
-				<div id="AC_msg_container" class="ui-state-highlight ui-corner-all" style="padding: 0 .7em; display:none">
+				<!-- AC POPUP-->
+				<div id="AC_msg_container" onclick="escondeMensagem();" class="ui-state-highlight ui-corner-all" style="padding: 0 .7em; margin-right:17%; text-align:center; display:none">
 					<p>
 						<span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
 						<span id="mensagemAC"></span>
-						<button onclick="escondeMensagem();"><span class="ui-icon ui-icon-close" style"padding: 1px 4px; vertical-align: top;"></span></button>
 					</p>
 				</div>
 
@@ -46,7 +47,7 @@
 				</div>
 
 			</aside>
-
+			<!-- Corpo do meio (Botoes, Ementa, Musica) -->
 			<div id="mdiv" class="pure-u-5-8">
 
 				<div id="menu" class="pure-u-5-8" align="center" style="padding-left:0%; ">
@@ -57,31 +58,42 @@
 					<img id="jogos" class="menu" onClick="switchMenus(); checkMenusOpen(2);" src="resources/jogos_button.png"	alt="jogos" style="display:none">
 					<img id="voltar" class="menu" onClick="switchMenus(); checkMenusOpen(3);" src="resources/voltar_button.png"	alt="voltar" style="display:none"></div>
 
-				<div id="ementa_tabela" class="pure-u-5-8" style="display:none; margin-left:7%; " align="center">
+				<div id="wrapper_ementa" class="clear" style="display: none">
 
-					<h1  style="margin-left:37%;" align="left" >Ementa</h1>
+					<div id="ementa_tabela" class="pure-u-5-8" style="margin-left:7%; " align="center">
 
-					<div class="pure-u-2-5 align-left">
-						<h3 style="padding-left:15%">Bebidas</h3>
+						<h1  style="margin-left:37%;" align="left" >Ementa</h1>
 
-						<ul class="clear-padding" style="padding-left:15%" >
-							<li>Café - Preço: 0.5€</li>
-							<li>Cerveja (33cl) - Preço: 1€</li>
-							<li>Sangria (33cl) - Preço: 2€</li>
-							<li>Shot - Preço: 2€</li>
-						</ul>
+						<div class="pure-u-2-5 align-left">
+							<h3 style="padding-left:15%">Bebidas</h3>
+
+							<ul id="lista_bebidas" class="clear-padding" style="padding-left:15%" >
+								<li class="draggable item">Café - Preço: 0.5€</li>
+								<li class="draggable item">Cerveja (33cl) - Preço: 1€</li>
+								<li class="draggable item">Sangria (33cl) - Preço: 2€</li>
+								<li class="draggable item">Shot - Preço: 2€</li>
+							</ul>
+						</div>
+
+						<div class="pure-u-2-5 align-left"  style="padding-left: 14%; float:center"	>
+							<h3>Comida</h3>
+							<ul id="lista_comidas" class="clear-padding ">
+								<li class="draggable item">Amendoins - Preço: 1€</li>
+								<li class="draggable item">Tosta Mista - Preço: 2.5€</li>
+								<li class="draggable item">Hamburguer - Preço: 5€</li>
+								<li class="draggable item">Bitoque - Preço: 7€</li>
+							</ul>
+						</div>
 					</div>
 
-					<div class="pure-u-2-5 align-left"  style="padding-left: 14%; float:center"	>
-						<h3>Comida</h3>
-						<ul class="clear-padding">
-							<li>Amendoins - Preço: 1€</li>
-							<li>Tosta Mista - Preço: 2.5€</li>
-							<li>Hamburguer - Preço: 5€</li>
-							<li>Bitoque - Preço: 7€</li>
-						</ul>
+					<!-- AREA ARRASTO -->
+					<div id="area_arrasto" class="pure-u-5-8 sortable" style="margin-left:7%; " align="center">
+						Arraste para aqui para encomendar
+						<br>
+						<p style="float:right; padding-right:5%"> Total:
+						<span id="total_compra">0€</span>
+						</p>
 					</div>
-
 				</div>
 
 				<div id="musica_tabela" class="pure-u-5-8" style="display:none; margin-left: 7%" align="center">
@@ -100,24 +112,23 @@
 					<ul class="clear-padding">
 						<li class="musicas" >
 							Hans Zimmer - Time (Inception OST)
-							<img id="pic1"  class="votar_bt" alt="votar" src="resources/votar_button.png" onClick="votarMusica('pic1');" width="13%" height="13%">
+							<img id="pic0"  class="votar_bt" alt="votar" src="resources/votar_button.png" onClick="votarMusica('pic0');" width="13%" height="13%">
 							<img id="15v"  class="nvotos" alt="15 votos" src="resources/15votos.png" width="13%" height="13%">
 							<br>Duração : 4:31</li>
 
 						<li class="musicas" >
 							Eric Clapton - Cocaine
-							<img id="pic2" class="votar_bt" alt="votar" src="resources/votar_button.png" onClick="votarMusica('pic2');" width="13%" height="13%">
+							<img id="pic1" class="votar_bt" alt="votar" src="resources/votar_button.png" onClick="votarMusica('pic1');" width="13%" height="13%">
 							<img id="10v"  class="nvotos" alt="10 votos" src="resources/10votos.png" width="13%" height="13%">
 							<br>Duração : 6:24</li>
 
 						<li class="musicas" >
 							Kavinsky - Nightcall
-							<img id="pic3" class="votar_bt" alt="votar" src="resources/votar_button.png" onClick="votarMusica('pic3');" width="13%" height="13%">
-							<img id="8v"  class="nvotos" alt="8 votos" src="resources/8votos.png" width="13%" height="13%">
+							<img id="pic2" class="votar_bt" alt="votar" src="resources/votar_button.png" onClick="votarMusica('pic2');" width="13%" height="13%">
+							<img id="9v"  class="nvotos" alt="9 votos" src="resources/9votos.png" width="13%" height="13%">
 							<br>Duração : 3:45</li>
 					</ul>
 				</div>
-
 			</div>
 
 			<div class="pure-u-3-10" style="float:right" align="left">
@@ -128,7 +139,7 @@
 				<div id="conta_talao" class="pure-u-1-5" style="float:left">
 					<h6 id="conta_titulo">Conta</h6>
 					<p>
-						Total: 	0€
+						Total: 	<span id="total_conta">0€</span>
 					</p>
 				</div>
 			</div>
@@ -139,4 +150,29 @@
 </body>
 	<script type="text/javascript">window.onload=GetClock;</script>
 	<script type="text/javascript">$("#playing").clone().appendTo($("#tocar"));</script>
+	<!-- Funciona tudo excepto o replace !! -->
+				<script type="text/javascript">
+				$( "#area_arrasto" ).bind(
+				{
+					  mouseout: function()
+					  {
+					  	$("#area_arrasto").each(function () {
+						    var sum = 0;
+						    $(".item", this).each(function () {
+						        var val = $.trim($(this).text());
+
+						        if (val) {						    
+						        	val = val.replace(/[^:]*:/ , "");
+						        	val = parseFloat(val.match(/[0-9]+.?[0-9]*/));
+						            sum += !isNaN(val) ? val : 0;
+						        }
+
+						    });
+						    $(this).find('#total_compra').html(sum + "€");
+						    $("#total_conta").html(sum + "€");
+						});
+			  		  }
+				});
+				</script>
+				<!-- Nao apagar -->
 </html>
