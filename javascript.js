@@ -53,14 +53,14 @@ temperatura = 20;
 			if (obj.id=="menos" && temperatura < 15) 
 			{
 				document.getElementById('mensagemAC').innerHTML = "Temperatura mínima atingida. \n (Toque para fechar)";
-				document.getElementById('menos').style.display = "none";
+				document.getElementById('menos').className += " pure-button-disabled";
 				document.getElementById('AC_msg_container').style.display = "block";
 				return;
 			}
 			else if (obj.id=="mais" && temperatura > 27)
 			{
 				document.getElementById('mensagemAC').innerHTML = "Temperatura máxima atingida. \n (Toque para fechar)";
-				document.getElementById('mais').style.display = "none";
+				document.getElementById('mais').className += " pure-button-disabled";
 				document.getElementById('AC_msg_container').style.display = "block";
 				return;
 			};
@@ -68,13 +68,13 @@ temperatura = 20;
 			if (obj.id=="mais")
 			{
 				document.getElementById('temperatura').innerHTML = ++temperatura + "°C";
-				document.getElementById('menos').style.display = "inline";
+				document.getElementById('menos').className = "arcondicionado";
 				document.getElementById('AC_msg_container').style.display = "none";
 			}
 			else if (obj.id=="menos")
 			{
 				document.getElementById('temperatura').innerHTML = --temperatura + "°C";
-				document.getElementById('mais').style.display = "inline";
+				document.getElementById('mais').className = "arcondicionado";
 				document.getElementById('AC_msg_container').style.display = "none";
 			};
 		}
@@ -135,19 +135,6 @@ temperatura = 20;
 		var ultimamusica = null;
 		function votarMusica(name)
 		{
-			/*
-			if (document.getElementById(name).src.indexOf("resources/votar_button.png") != -1)
-			{
-				document.getElementById('pic1').src = 'resources/votar_button.png';
-				document.getElementById('pic2').src = 'resources/votar_button.png';
-				document.getElementById('pic3').src = 'resources/votar_button.png';
-				document.getElementById(name).src   = 'resources/votado_button.png';
-			}
-			else
-			{
-				document.getElementById(name).src = 'resources/votar_button.png';	
-			};
-			*/
 			if (ultimamusica == null)
 			{
 				document.getElementById(name).src = 'resources/votado_button.png';

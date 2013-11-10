@@ -6,6 +6,7 @@
 	<link rel="stylesheet" type='text/css' href="css/normalize.css">
 	<link rel="stylesheet" type='text/css' href="css/pure-min.css">
 	<link rel="stylesheet" type='text/css' href="css/style.css">
+	<link rel="stylesheet" href="css\font-awesome-4.0.3\css\font-awesome.min.css">
 	<link rel="stylesheet" href="jquery-ui-1.10.3/css/ui-lightness/jquery-ui-1.10.3.custom.css">
 	<script src="jquery-ui-1.10.3/js/jquery-1.9.1.js"></script>
 	<script src="jquery-ui-1.10.3/js/jquery-ui-1.10.3.custom.js"></script>
@@ -29,7 +30,7 @@
 
 				<!-- AR CONDICIONADO -->
 				<img src="resources/relogioMENOS.png" id="menos" class="arcondicionado"	onclick="regulaTemp(this);">
-				<p class="arcondicionado"	id="temperatura">20°C</p>
+				<p class="arcondicionado" style="cursor: default;"	id="temperatura">20°C</p>
 				<img src="resources/relogioMAIS.png" id="mais" class="arcondicionado"	onclick="regulaTemp(this);">
 
 				<br>
@@ -62,7 +63,7 @@
 
 					<div id="ementa_tabela" class="pure-u-5-8" style="margin-left:7%; " align="center">
 
-						<h1  style="margin-left:37%;" align="left" >Ementa</h1>
+						<h1  style="margin: 0 auto 0 37%;" class="clear-padding" align="left" >Ementa</h1>
 
 						<div class="pure-u-2-5 align-left">
 							<h3 style="padding-left:15%">Bebidas</h3>
@@ -87,12 +88,17 @@
 					</div>
 
 					<!-- AREA ARRASTO -->
-					<div id="area_arrasto" class="pure-u-5-8 sortable" style="margin-left:7%; " align="center">
-						Arraste para aqui para encomendar
-						<br>
-						<p style="float:right; padding-right:5%"> Total:
-						<span id="total_compra">0€</span>
-						</p>
+					<div align="center">
+							<h3 style="padding-left:14%; color:#fff;" align="left">Arraste para a área abaixo para encomendar</h3>
+						<div class="pure-u-2-5" align="left" style="margin-right:24%; margin-bottom:3%; padding-left:3%;">
+							<button align="left" onclick="limpaPedidos();" class="pure-button pure-button-xsmall">Remover pedidos</button>
+							<button align="left"class="pure-button pure-button-xsmall">Fazer Pedidos</button>
+						</div>
+						<div id="area_arrasto" class="pure-u-2-5 sortable" align="left" style="margin-right:23%; padding-left:3%;">
+						<p style="float:right; padding-right:5%">
+						<span id="total_compra">Total: 0€</span>
+						<span id="total_itens">Qtd: 0</span>
+						</p></div>
 					</div>
 				</div>
 
@@ -151,28 +157,30 @@
 	<script type="text/javascript">window.onload=GetClock;</script>
 	<script type="text/javascript">$("#playing").clone().appendTo($("#tocar"));</script>
 	<!-- Funciona tudo excepto o replace !! -->
-				<script type="text/javascript">
-				$( "#area_arrasto" ).bind(
-				{
-					  mouseout: function()
-					  {
-					  	$("#area_arrasto").each(function () {
-						    var sum = 0;
-						    $(".item", this).each(function () {
-						        var val = $.trim($(this).text());
+	<script type="text/javascript">
+	$( "#area_arrasto" ).bind(
+	{
+		  mouseout: function()
+		  {
+		  	$("#area_arrasto").each(function () {
+			    var sum = 0;
+			    var itens = 0;
+			    $(".item", this).each(function () {
+			        var val = $.trim($(this).text());
 
-						        if (val) {						    
-						        	val = val.replace(/[^:]*:/ , "");
-						        	val = parseFloat(val.match(/[0-9]+.?[0-9]*/));
-						            sum += !isNaN(val) ? val : 0;
-						        }
-
-						    });
-						    $(this).find('#total_compra').html(sum + "€");
-						    $("#total_conta").html(sum + "€");
-						});
-			  		  }
-				});
-				</script>
-				<!-- Nao apagar -->
+			        if (val) {						    
+			        	val = val.replace(/[^:]*:/ , "");
+			        	val = parseFloat(val.match(/[0-9]+.?[0-9]*/));
+			            sum += !isNaN(val) ? val : 0;
+			             ++itens;
+			        }			       
+			    });
+			    $(this).find('#total_compra').html("Total:" + sum + "€");
+			    $(this).find('#total_itens').html("Qtd:" + itens);
+			    $("#total_conta").html(sum + "€");
+			});
+  		  }
+	});
+	</script>
+	<!-- Nao apagar -->
 </html>
