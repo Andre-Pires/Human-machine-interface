@@ -186,7 +186,116 @@ temperatura = 20;
 						</p>';
 
 			document.getElementById('removeItens').className += " pure-button-disabled";
+			document.getElementById('fazPedido').className += " pure-button-disabled";
+			document.getElementById('removeItens').disabled = true;
+			document.getElementById('fazPedido').disabled = true;
 		}
+
+		function copiaArea () {
+
+			$("#area_arrasto").each(function () {
+				    var sum = 0;
+				    var itens = 0;
+				    $(".item", this).each(function () {
+				        var val = $.trim($(this).text());
+
+				        if (val) 
+				        {
+				        	$("#dialogCorpoConta").append(val + '<br>');
+				        }			       
+				    });
+				});
+
+		}
+/* Popup para a confirmacao do pedido */
+
+		$(function() {
+		    $( "#dialogComprar" ).dialog({
+		      autoOpen: false,
+		      show: {
+		        effect: "drop",
+		        duration: 700
+		      },
+		      hide: {
+		        effect: "drop",
+		        duration: 700
+		      },
+		      buttons: {
+		        "Confirmar": function() {
+                    var $conta = $("#total_conta>span").text();
+                    var $itens = $("#total_conta_itens>span").text();
+                    console.log($itens);
+				    $("#total_conta_itens").html("Qtd: <span>" + ( parseFloat($itens) + parseFloat($("#total_itens>span").text())) + "</span>");
+				    $("#total_conta").html("Total: <span>" + ( parseFloat($conta) + parseFloat($("#total_compra>span").text())) + "</span>€");
+				    $("#detalhesConta").addClass("pure-button pure-button-xsmall").removeClass("pure-button-disabled");
+					$("#detalhesConta").prop('disabled', false);
+					copiaArea();
+					limpaPedidos();
+		          $( this ).dialog( "close" );
+		        },
+		        "Cancelar": function() {
+		          $( this ).dialog( "close" );
+		        }
+		      }
+		    });
+		 
+		    $( "#fazPedido" ).click(function() {
+		      $( "#dialogComprar" ).dialog( "open" );
+		    });
+		  });
+
+
+	/* Popup para a confirmacao de apagar o pedido */
+	  $(function() {
+	    $( "#dialogApagar" ).dialog({
+	      autoOpen: false,
+	      show: {
+	        effect: "drop",
+	        duration: 700
+	      },
+	      hide: {
+	        effect: "drop",
+	        duration: 700
+	      },
+	      buttons: {
+	        "Apagar itens": function() {
+	          limpaPedidos();
+	          $( this ).dialog( "close" );
+	        },
+	        "Cancelar": function() {
+	          $( this ).dialog( "close" );
+	        }
+	      }
+	    });
+	 
+	    $( "#removeItens" ).click(function() {
+	      $( "#dialogApagar" ).dialog( "open" );
+	    });
+	  });
+
+	  /* Popup para os detalhes da conta */
+	  $(function() {
+	    $( "#dialogConta" ).dialog({
+	      autoOpen: false,
+	      show: {
+	        effect: "drop",
+	        duration: 700
+	      },
+	      hide: {
+	        effect: "drop",
+	        duration: 700
+	      },
+	      buttons: {
+	        "OK": function() {
+	          $( this ).dialog( "close" );
+	        }
+	      }
+	    });
+	 
+	    $( "#detalhesConta" ).click(function() {
+	      $( "#dialogConta" ).dialog( "open" );
+	    });
+	  });
 
 
 /* ------------------------------ Drag 'n Drop jQuery -----------------------*/

@@ -90,14 +90,18 @@
 					<!-- AREA ARRASTO -->
 					<div  class="pure-u-5-8" style="margin-left:7%; " align="center">
 
-						<div id="dialog" title="Limpar o pedido?">
-						  <p>Tem a certeza que quer apagar os itens já selecionados?</p>
+						<div id="dialogApagar" title="Limpar o pedido?">
+						  <p>Tem a certeza que quer apagar os itens selecionados?</p>
 						</div>
 
-							<h3 style="color:#fff;" onclick="AskAndSubmit();">Arraste para a área abaixo para encomendar</h3>
+						<div id="dialogComprar" title="Confirmar o pedido?">
+						  <p>Tem a certeza que quer comprar os itens selecionados?</p>
+						</div>
+
+							<h3 style="color:#fff;">Arraste para a área abaixo para encomendar</h3>
 						<div class="pure-u-5-8" align="center" style="margin-bottom:3%;">
-							<button id="removeItens" align="left" style="margin-right:4%;" class="pure-button pure-button-disabled pure-button-xsmall">Remover itens</button>
-							<button id="fazPedido" align="left"class="pure-button pure-button-xsmall">Fazer Pedido</button>
+							<button id="removeItens" align="left" style="margin-right:4%;" class="pure-button pure-button-disabled pure-button-xsmall" disabled="disabled">Remover itens</button>
+							<button id="fazPedido" align="left"class="pure-button pure-button-disabled pure-button-xsmall" disabled="disabled">Fazer Pedido</button>
 						</div>
 						<div id="area_arrasto" class="pure-u-5-8 sortable stitched" align="left" style="padding-left:3%;">
 						<p style="float:right; padding-right:5%">
@@ -122,10 +126,10 @@
 
 					<ul class="clear-padding">
 						<li class="musicas" >
-							Hans Zimmer - Time (Inception OST)
+							SRV - Voodoo Child (Slight Return)
 							<img id="pic0"  class="votar_bt" alt="votar" src="resources/votar_button.png" onClick="votarMusica('pic0');" width="13%" height="13%">
 							<img id="15v"  class="nvotos" alt="15 votos" src="resources/15votos.png" width="13%" height="13%">
-							<br>Duração : 4:31</li>
+							<br>Duração : 7:59</li>
 
 						<li class="musicas" >
 							Eric Clapton - Cocaine
@@ -142,16 +146,23 @@
 				</div>
 			</div>
 
-			<div class="pure-u-3-10" style="float:right" align="left">
+			<div class="pure-u-1-12" align="center">
 
 				<img class="ajuda" src="resources/lifebuoy-blue.png" onClick="openHelp(this)" alt="ajuda"  width="45%" height="45%">
-				<p class="ajuda" style="letter-spacing:normal; padding-left:10%" onClick="openHelp(this)">Ajuda</p>
+				<p class="ajuda" style="letter-spacing:normal;" onClick="openHelp(this)">Ajuda</p>
 
-				<div id="conta_talao" class="pure-u-1-5" style="float:left">
+				<div id="conta_talao" class="pure-u-1-12">
 					<h6 id="conta_titulo">Conta</h6>
 					<p>
-						Total: 	<span id="total_conta">0€</span>
+						<span id="total_conta_itens">Qtd: <span>0</span></span>
+						<span id="total_conta">Total: <span>0</span>€</span>
 					</p>
+				</div>
+				<div id="botoesConta" class="pure-u-1-12">
+					<div id="dialogConta" title="Detalhes da conta">
+						  <p id="dialogCorpoConta"></p>
+					</div>
+				<button id="detalhesConta"  class="pure-button pure-button-disabled pure-button-xsmall">Detalhes</button>
 				</div>
 			</div>
 
@@ -174,48 +185,25 @@
 			    $(".item", this).each(function () {
 			        var val = $.trim($(this).text());
 
-			        if (val) {						    
+			        if (val) {						
+			        	/* para retirar a quantidade e o total */   
 			        	val = val.replace(/[^:]*:/ , "");
 			        	val = parseFloat(val.match(/[0-9]+.?[0-9]*/));
 			            sum += !isNaN(val) ? val : 0;
 			             ++itens;
 			        }			       
 			    });
-			    if (old < sum) {
-			    document.getElementById('removeItens').className = "pure-button pure-button-xsmall";};
-			    $(this).find('#total_compra').html("Total: " + sum + "€");
-			    $(this).find('#total_itens').html("Qtd: " + itens);
-			    $("#total_conta").html(sum + "€");
+			    if (old < sum) 
+			    {
+			    $("#removeItens").addClass("pure-button pure-button-xsmall").removeClass("pure-button-disabled");
+			    $("#removeItens").prop('disabled', false);
+			    $("#fazPedido").addClass("pure-button pure-button-xsmall").removeClass("pure-button-disabled");
+			    $("#fazPedido").prop('disabled', false);
+				};
+			    $("#total_compra").html("Total: <span>" + sum + "</span>€");
+			    $("#total_itens" ).html("Qtd: <span>" + itens + "</span>");
 			});
   		  }
 	});
 	</script>
-	<script>
-  $(function() {
-    $( "#dialog" ).dialog({
-      autoOpen: false,
-      show: {
-        effect: "fade",
-        duration: 1000
-      },
-      hide: {
-        effect: "fade",
-        duration: 1000
-      },
-      buttons: {
-        "Apagar itens": function() {
-          limpaPedidos();
-          $( this ).dialog( "close" );
-        },
-        "Cancelar": function() {
-          $( this ).dialog( "close" );
-        }
-      }
-    });
- 
-    $( "#removeItens" ).click(function() {
-      $( "#dialog" ).dialog( "open" );
-    });
-  });
-  </script>
 </html>

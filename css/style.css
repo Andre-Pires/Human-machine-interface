@@ -52,12 +52,23 @@ li{
 
 #conta_talao{
 	color: #000;
-	font-size: 11pt;
-	padding: 0 35% 3% 20%;
+	font-size: 12pt;
+	padding: 0 55% 3% 20%;
 	margin-top: 20%;
+	margin-right: 5%;
 	background: url(../resources/textura-papel.jpg) center;
 }
 
+#detalhesConta{
+	padding: 0.5em 0.7em;
+	margin-top: 80%;
+	margin-left: 60%;
+}
+
+#botoesConta{
+	margin-top: 3%;
+	margin-right:58%;
+}
 
 #title{
 	margin-top: 0%;
@@ -72,7 +83,6 @@ li{
 
 .ajuda{
 	cursor: help;
-	padding-left: 4%;
 	color: #fff;
 	font-size: 12pt;
 }
