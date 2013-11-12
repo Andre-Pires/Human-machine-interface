@@ -29,13 +29,13 @@
 				<br>
 
 				<!-- AR CONDICIONADO -->
-				<img src="resources/relogioMENOS.png" id="menos" class="arcondicionado"	onclick="regulaTemp(this);">
+				<img src="resources/relogioMENOS.png" alt="menos" id="menos" class="arcondicionado"	onclick="regulaTemp(this);">
 				<p class="arcondicionado" style="cursor: default;"	id="temperatura">20°C</p>
-				<img src="resources/relogioMAIS.png" id="mais" class="arcondicionado"	onclick="regulaTemp(this);">
+				<img src="resources/relogioMAIS.png" alt="mais" id="mais" class="arcondicionado"	onclick="regulaTemp(this);">
 
 				<br>
 				<!-- AC POPUP-->
-				<div id="AC_msg_container" onclick="escondeMensagem();" class="ui-state-highlight ui-corner-all" style="padding: 0 .7em; margin-right:17%; text-align:center; display:none">
+				<div id="AC_msg_container" onclick="escondeMensagem();" class="ui-state-highlight ui-corner-all center" style="padding: 0 .7em; margin-right:17%; display:none">
 					<p>
 						<span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
 						<span id="mensagemAC"></span>
@@ -51,7 +51,7 @@
 			<!-- Corpo do meio (Botoes, Ementa, Musica) -->
 			<div id="mdiv" class="pure-u-5-8">
 
-				<div id="menu" class="pure-u-5-8" align="center" style="padding-left:0%; ">
+				<div id="menu" class="pure-u-5-8 center" style="padding-left:0%; ">
 					<img id="barista" class="menu" onClick="switchMenus();" src="resources/barista_button.png"	alt="barista">
 					<img id="ementa" class="menu" onClick="switchEmenta(); checkMenusOpen(1);" src="resources/ementa_button.png"	alt="ementa" style="display:none">
 					<img id="conta" class="menu" onClick="switchMenus(); checkMenusOpen(4);" src="resources/conta_button.png"	alt="conta" style="display:none">
@@ -61,7 +61,7 @@
 
 				<div id="wrapper_ementa" class="clear" style="display: none">
 
-					<div id="ementa_tabela" class="pure-u-5-8" style="margin-left:7%; " align="center">
+					<div id="ementa_tabela" class="pure-u-5-8 center" style="margin-left:7%; ">
 
 						<h1  style="margin: 0 auto 0 40%;" class="clear-padding" align="left" >Ementa</h1>
 
@@ -88,7 +88,7 @@
 					</div>
 
 					<!-- AREA ARRASTO -->
-					<div  class="pure-u-5-8" style="margin-left:7%; " align="center">
+					<div  class="pure-u-5-8 center" style="margin-left:7%; ">
 
 						<div id="dialogApagar" title="Limpar o pedido?">
 						  <p>Tem a certeza que quer apagar os itens selecionados?</p>
@@ -99,9 +99,9 @@
 						</div>
 
 							<h3 style="color:#fff;">Arraste para a área abaixo para encomendar</h3>
-						<div class="pure-u-5-8" align="center" style="margin-bottom:3%;">
-							<button id="removeItens" align="left" style="margin-right:4%;" class="pure-button pure-button-disabled pure-button-xsmall" disabled="disabled">Remover itens</button>
-							<button id="fazPedido" align="left"class="pure-button pure-button-disabled pure-button-xsmall" disabled="disabled">Fazer Pedido</button>
+						<div class="pure-u-5-8 center" style="margin-bottom:3%;">
+							<button id="removeItens" style="margin-right:4%;" class="pure-button pure-button-disabled pure-button-xsmall" disabled="disabled">Remover itens</button>
+							<button id="fazPedido" class="pure-button pure-button-disabled pure-button-xsmall" disabled="disabled">Fazer Pedido</button>
 						</div>
 						<div id="area_arrasto" class="pure-u-5-8 sortable stitched" align="left" style="padding-left:3%;">
 						<p style="float:right; padding-right:5%">
@@ -111,7 +111,7 @@
 					</div>
 				</div>
 
-				<div id="musica_tabela" class="pure-u-5-8" style="display:none; margin-left: 7%" align="center">
+				<div id="musica_tabela" class="pure-u-5-8 center" style="display:none; margin-left: 7%">
 
 					<h1>Músicas</h1>
 					<h3>Lista de Reprodução</h3>
@@ -127,26 +127,26 @@
 					<ul class="clear-padding">
 						<li class="musicas" >
 							SRV - Voodoo Child (Slight Return)
-							<img id="pic0"  class="votar_bt" alt="votar" src="resources/votar_button.png" onClick="votarMusica('pic0');" width="13%" height="13%">
-							<img id="15v"  class="nvotos" alt="15 votos" src="resources/15votos.png" width="13%" height="13%">
+							<img id="pic0"  class="votar_bt align-middle" alt="votar" src="resources/votar_button.png" onClick="votarMusica('pic0');" width="9%" height="9%">
+							<img id="15v"  class="nvotos align-middle" alt="15 votos" src="resources/15votos.png" width="9%" height="9%">
 							<br>Duração : 7:59</li>
 
 						<li class="musicas" >
 							Eric Clapton - Cocaine
-							<img id="pic1" class="votar_bt" alt="votar" src="resources/votar_button.png" onClick="votarMusica('pic1');" width="13%" height="13%">
-							<img id="10v"  class="nvotos" alt="10 votos" src="resources/10votos.png" width="13%" height="13%">
+							<img id="pic1" class="votar_bt align-middle" alt="votar" src="resources/votar_button.png" onClick="votarMusica('pic1');" width="9%" height="9%">
+							<img id="10v"  class="nvotos align-middle" alt="10 votos" src="resources/10votos.png" width="9%" height="9%">
 							<br>Duração : 6:24</li>
 
 						<li class="musicas" >
 							Kavinsky - Nightcall
-							<img id="pic2" class="votar_bt" alt="votar" src="resources/votar_button.png" onClick="votarMusica('pic2');" width="13%" height="13%">
-							<img id="9v"  class="nvotos" alt="9 votos" src="resources/9votos.png" width="13%" height="13%">
+							<img id="pic2" class="votar_bt align-middle" alt="votar" src="resources/votar_button.png" onClick="votarMusica('pic2');" width="9%" height="9%">
+							<img id="9v"  class="nvotos align-middle" alt="9 votos" src="resources/9votos.png" width="9%" height="9%">
 							<br>Duração : 3:45</li>
 					</ul>
 				</div>
 			</div>
 
-			<div class="pure-u-1-12" align="center">
+			<div class="pure-u-1-12 center">
 
 				<img class="ajuda" src="resources/lifebuoy-blue.png" onClick="openHelp(this)" alt="ajuda"  width="45%" height="45%">
 				<p class="ajuda" style="letter-spacing:normal;" onClick="openHelp(this)">Ajuda</p>
@@ -160,9 +160,9 @@
 				</div>
 				<div id="botoesConta" class="pure-u-1-12">
 					<div id="dialogConta" title="Detalhes da conta">
-						  <p id="dialogCorpoConta"></p>
+						<p id="dialogCorpoConta"></p>
 					</div>
-				<button id="detalhesConta"  class="pure-button pure-button-disabled pure-button-xsmall">Detalhes</button>
+				<button id="detalhesConta"  class="pure-button pure-button-disabled pure-button-xsmall" disabled="disabled">Detalhes</button>
 				</div>
 			</div>
 

@@ -224,11 +224,12 @@ temperatura = 20;
 		        "Confirmar": function() {
                     var $conta = $("#total_conta>span").text();
                     var $itens = $("#total_conta_itens>span").text();
-                    console.log($itens);
+
 				    $("#total_conta_itens").html("Qtd: <span>" + ( parseFloat($itens) + parseFloat($("#total_itens>span").text())) + "</span>");
 				    $("#total_conta").html("Total: <span>" + ( parseFloat($conta) + parseFloat($("#total_compra>span").text())) + "</span>€");
 				    $("#detalhesConta").addClass("pure-button pure-button-xsmall").removeClass("pure-button-disabled");
 					$("#detalhesConta").prop('disabled', false);
+
 					copiaArea();
 					limpaPedidos();
 		          $( this ).dialog( "close" );
