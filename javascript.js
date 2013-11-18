@@ -154,15 +154,18 @@ temperatura = 20;
 		}
 
 
-		var votos = new Array(15, 10, 9);
-		function alteraVotos (name, novoVoto) {
-			for (i = 0; i < votos.length; ++i) {
-				document.getElementById(votos[i] + 'v').src = 'resources/' + votos[i] +
+        function alteraVotos (name, novoVoto) {
+		    var votos = new Array(9, 10, 10);
+			
+            for (i = 0; i < votos.length; ++i) {
+				document.getElementById(i + 'v').src = 'resources/' + votos[i] +
 				'votos.png';
 			}
 			if (novoVoto) {
+                // recebe "0v", p.ex.
 				var pos = name.match(/[0-9]+/);
-				var id =  votos[pos] + 'v';
+                console.info(pos);
+				var id = pos + 'v';
 				document.getElementById(id).src = 'resources/' + (votos[pos] + 1) +
 					'votos.png';
 			}
@@ -178,6 +181,8 @@ temperatura = 20;
 			return number;
 		}
 
+
+/* Old
 		function limpaPedidos (){
 
 			document.getElementById('area_arrasto').innerHTML = '<p style="float:right; padding-right:5%">\
@@ -190,7 +195,9 @@ temperatura = 20;
 			document.getElementById('removeItens').disabled = true;
 			document.getElementById('fazPedido').disabled = true;
 		}
+*/
 
+/*	Old
 		function copiaArea () {
 
 			$("#area_arrasto").each(function () {
@@ -207,6 +214,41 @@ temperatura = 20;
 				});
 
 		}
+*/
+		
+		function limpaPedidos (){
+
+			document.getElementById('area_arrasto').innerHTML = '<div class="basket_list">\
+								<div class="head">\
+									<span class="name">Produto</span>\
+									<span class="count">Quantidade</span>\
+								</div>\
+								<ul></ul>\
+							</div>\
+							<div id="total_pedido" style="text-align:right" class="price">Total: <span>0</span>€</div>';
+
+			document.getElementById('removeItens').className += " pure-button-disabled";
+			document.getElementById('fazPedido').className += " pure-button-disabled";
+			document.getElementById('removeItens').disabled = true;
+			document.getElementById('fazPedido').disabled = true;
+		}
+
+		function copiaArea () {
+
+			$("#area_arrasto").each(function () {
+				    $("div ul li", this).each(function () {
+				        var val = $.trim($(this).text()).replace(/X/ , " ");
+						var qtd = $("input", this).val();
+
+				        if (val) 
+				        {
+				        	$("#dialogCorpoConta").append(val + 'Qtd:' + qtd +'<br>');
+				        }
+				    });
+				});
+
+		}
+
 /* Popup para a confirmacao do pedido */
 
 		$(function() {
@@ -224,9 +266,24 @@ temperatura = 20;
 		        "Confirmar": function() {
                     var $conta = $("#total_conta>span").text();
                     var $itens = $("#total_conta_itens>span").text();
+                    var sum = 0;
 
-				    $("#total_conta_itens").html("Qtd: <span>" + ( parseFloat($itens) + parseFloat($("#total_itens>span").text())) + "</span>");
-				    $("#total_conta").html("Total: <span>" + ( parseFloat($conta) + parseFloat($("#total_compra>span").text())) + "</span>€");
+                    $("#area_arrasto").each(function () {
+					    $("div ul li input", this).each(function () {
+					        var val = parseInt($(this).val());
+
+					        
+					        if (val) 
+					        {
+					        	sum += val;
+					        }			       
+					    });
+					    sum += parseFloat($itens);
+					});
+
+
+				    $("#total_conta_itens").html("Comprou <span>" + (sum) + "</span> produto(s).<br>");
+				    $("#total_conta").html("Total: <span>" + ( parseFloat($conta) + parseFloat($("#total_pedido>span").text())) + "</span>€");
 				    $("#detalhesConta").addClass("pure-button pure-button-xsmall").removeClass("pure-button-disabled");
 					$("#detalhesConta").prop('disabled', false);
 
@@ -299,95 +356,56 @@ temperatura = 20;
 	  });
 
 
-/* ------------------------------ Drag 'n Drop jQuery -----------------------*/
 
-/*
-$(function() {
-        /** we set the draggable class to be draggable, we add the containment which will be #boxdemo, so dropable and draggable object cant pass out of this box 
-    $( ".draggable" ).draggable({ 
-        containment:"#boxdemo",
-        revert: "invalid"
-    });
- 
-    $( ".droppable" ).droppable({
-        /** tolerance:fit means, the moveable object has to be inside the dropable object area 
-        tolerance: 'fit',
-        over: function(event, ui) {
-            /** We add the hoverClass when the moveable object is inside of the dropable object 
-            $('.ui-draggable-dragging').addClass('hoverClass');
-        },
-        out: function(event, ui) {
-            /** We remove the hoverClass when the moveable object is outside of the dropable object area 
-            $('.ui-draggable-dragging').removeClass('hoverClass');
-        },
-        /** This is the drop event, when the draggable object is moved on the top of the dropable object area 
-        drop: function( event, ui ) {
-            $( ".droppable" ).addClass('dropClass');
+/*--------------- FLASH DA MENSAGEM DE ARRASTO DA EMENTA ---------------*/
+
+  var textObject = {
+    delay : 300,
+    effect : 'replace',
+    whiteColour : true,
+    firstColour : 'flash-white',
+    secondColour : 'flash-blue',
+    numtimes : 6,
+    flash : function(obj, effect, delay) {
+        //checka se há um objecto no documento
+        if (obj.length > 0) {
+            // se há mais do que um, aplica o flashing a todos 
+            // (nao e relevante, por enquanto)
+            if (obj.length > 1) {
+                jQuery.each(obj, function() {
+                    effect = effect || textObject.effect;
+                    delay = delay || textObject.delay;
+                    textObject.flashExe($(this), effect, delay);                    
+                });
+            } else { //apenas 1 objecto (header do "Arraste para ...")
+                effect = effect || textObject.effect;
+                delay = delay || textObject.delay;
+                textObject.flashExe(obj, effect, delay);
+            }
         }
-    });
-});		
-
-
-$(document).ready( function() {
-  $('#ClickWordList li').click(function() { 
-    $("#txtMessage").insertAtCaret($(this).text());
-    return false
-  });
-  $("#DragWordList li").draggable({helper: 'clone'});
-  $(".txtDropTarget").droppable({
-    accept: "#DragWordList li",
-    drop: function(ev, ui) {
-      $(this).insertAtCaret(ui.draggable.text());
+    },
+    flashExe : function(obj, effect, delay) {
+        var flash = setTimeout(function() {
+            if (textObject.numtimes > 0) {
+                switch(effect) {
+                    case 'replace':
+                        obj.toggle();
+                    break;
+                    case 'colour':
+                        if (textObject.whiteColour) {
+                            obj.addClass(textObject.secondColour); // adiciona o azul
+                            obj.removeClass(textObject.firstColour); // tira o branco
+                            textObject.whiteColour = false;
+                        } else {
+                            obj.addClass(textObject.firstColour); 
+                            obj.removeClass(textObject.secondColour); 
+                            textObject.whiteColour = true;
+                        }
+                    break;
+                }
+                textObject.numtimes--;
+                textObject.flashExe(obj, effect, delay);
+            }
+        }, delay);
     }
-  });
-});
- 
-$.fn.insertAtCaret = function (myValue) {
-  return this.each(function(){
-  //IE support
-  if (document.selection) {
-    this.focus();
-    sel = document.selection.createRange();
-    sel.text = myValue;
-    this.focus();
-  }
-  //MOZILLA / NETSCAPE support
-  else if (this.selectionStart || this.selectionStart == '0') {
-    var startPos = this.selectionStart;
-    var endPos = this.selectionEnd;
-    var scrollTop = this.scrollTop;
-    this.value = this.value.substring(0, startPos)+ myValue+ this.value.substring(endPos,this.value.length);
-    this.focus();
-    this.selectionStart = startPos + myValue.length;
-    this.selectionEnd = startPos + myValue.length;
-    this.scrollTop = scrollTop;
-  } else {
-    this.value += myValue;
-    this.focus();
-  }
-  });
-}; */
-
- total = 1;
-
-  $(function() {
-    $( ".sortable" ).sortable({
-      revert: true
-    });
-    $( ".draggable" ).draggable({
-      connectToSortable: ".sortable",
-      helper: "clone",
-      revert: "invalid"
-    });
-    // $( ".droppable" ).droppable({
-    //   revert: true,
-    //   drop: function (event, ui) {
-    //   		console.info( ui.draggable.find('li').attr('id') );
-    //   		var str = document.getElementById( ui.draggable.attr('id') ).innerHTML;
-    //   		var preco = parseInt( str );
-    //   		total += preco;
-    //   		document.getElementById( $(ui.draggable).id ).text(total);
-    //   	}
-    // });
-    $( "ul, li" ).disableSelection();
-  });
+};

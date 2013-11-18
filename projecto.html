@@ -6,7 +6,7 @@
 	<link rel="stylesheet" type='text/css' href="css/normalize.css">
 	<link rel="stylesheet" type='text/css' href="css/pure-min.css">
 	<link rel="stylesheet" type='text/css' href="css/style.css">
-	<link rel="stylesheet" href="css\font-awesome-4.0.3\css\font-awesome.min.css">
+	<link rel="stylesheet" href="css/font-awesome-4.0.3/css/font-awesome.min.css">
 	<link rel="stylesheet" href="jquery-ui-1.10.3/css/ui-lightness/jquery-ui-1.10.3.custom.css">
 	<script src="jquery-ui-1.10.3/js/jquery-1.9.1.js"></script>
 	<script src="jquery-ui-1.10.3/js/jquery-ui-1.10.3.custom.js"></script>
@@ -16,9 +16,7 @@
 	<div class="pure-g-r">
 		<div class="pure-u-1 min-width">
 			<div class="pure-u-1">
-				<header id="header">
-					<h1 id="title">BarISTa</h1>
-				</header>
+				<header id="header"></header>
 			</div>
 
 			<aside id="fillerdiv" class="pure-u-1-5">
@@ -48,73 +46,85 @@
 				</div>
 
 			</aside>
-			<!-- Corpo do meio (Botoes, Ementa, Musica) -->
+			<!-- Corpo do meio (Botoes, Ementa, Musica, etc) -->
 			<div id="mdiv" class="pure-u-5-8">
 
 				<div id="menu" class="pure-u-5-8 center" style="padding-left:0%; ">
 					<img id="barista" class="menu" onClick="switchMenus();" src="resources/barista_button.png"	alt="barista">
 					<img id="ementa" class="menu" onClick="switchEmenta(); checkMenusOpen(1);" src="resources/ementa_button.png"	alt="ementa" style="display:none">
-					<img id="conta" class="menu" onClick="switchMenus(); checkMenusOpen(4);" src="resources/conta_button.png"	alt="conta" style="display:none">
+					<img id="conta" class="menu" onClick="switchMenus(); checkMenusOpen(4);" src="resources/eventos_button.png"	alt="conta" style="display:none">
 					<img id="musica" class="menu" onClick="switchMusica(); checkMenusOpen(5);" src="resources/musica_button.png"	alt="musica" style="display:none">
 					<img id="jogos" class="menu" onClick="switchMenus(); checkMenusOpen(2);" src="resources/jogos_button.png"	alt="jogos" style="display:none">
 					<img id="voltar" class="menu" onClick="switchMenus(); checkMenusOpen(3);" src="resources/voltar_button.png"	alt="voltar" style="display:none"></div>
 
 				<div id="wrapper_ementa" class="clear" style="display: none">
-
 					<div id="ementa_tabela" class="pure-u-5-8 center" style="margin-left:7%; ">
-
 						<h1  style="margin: 0 auto 0 40%;" class="clear-padding" align="left" >Ementa</h1>
 
-						<div class="pure-u-2-5 align-left">
+						<section class="pure-u-2-5 align-left product">
 							<h3 style="padding-left:15%">Bebidas</h3>
 
-							<ul id="lista_bebidas" class="clear-padding" style="padding-left:15%" >
-								<li class="draggable item">Café - Preço: 0.5€</li>
-								<li class="draggable item">Cerveja (33cl) - Preço: 1€</li>
-								<li class="draggable item">Sangria (33cl) - Preço: 2€</li>
-								<li class="draggable item">Shot - Preço: 2€</li>
+							<ul id="lista_bebidas" class="clear-padding clear" style="padding-left:15%" >
+								<li data-id="1" class="draggable item li_cursor_m"><span>Café</span> - Preço: <span>0.5</span>€</li>
+								<li data-id="2" class="draggable item li_cursor_m"><span>Cerveja (33cl)</span> - Preço: <span>1</span>€</li>
+								<li data-id="3" class="draggable item li_cursor_m"><span>Sangria (33cl)</span> - Preço: <span>2</span>€</li>
+								<li data-id="4" class="draggable item li_cursor_m"><span>Shot</span> - Preço: <span>2</span>€</li>
+								<li data-id="5" class="draggable item li_cursor_m"><span>Martini</span> - Preço: <span>4.5</span>€</li>
 							</ul>
-						</div>
+						</section>
 
-						<div class="pure-u-2-5 align-left"  style="padding-left: 14%; float:center"	>
+						<section class="pure-u-2-5 align-left product"  style="padding-left: 14%; float:center"	>
 							<h3>Comida</h3>
-							<ul id="lista_comidas" class="clear-padding ">
-								<li class="draggable item">Amendoins - Preço: 1€</li>
-								<li class="draggable item">Tosta Mista - Preço: 2.5€</li>
-								<li class="draggable item">Hamburguer - Preço: 5€</li>
-								<li class="draggable item">Bitoque - Preço: 7€</li>
+							<ul id="lista_comidas" class="clear-padding clear">
+								<li data-id="6" class="draggable item li_cursor_m"><span>Amendoins</span> - Preço: <span>1</span>€</li>
+								<li data-id="7" class="draggable item li_cursor_m"><span>Tosta Mista</span> - Preço: <span>2.5</span>€</li>
+								<li data-id="8" class="draggable item li_cursor_m"><span>Hamburguer</span> - Preço: <span>5</span>€</li>
+								<li data-id="9" class="draggable item li_cursor_m"><span>Bitoque</span> - Preço: <span>7</span>€</li>
+								<li data-id="10" class="draggable item li_cursor_m"><span>Pão de Alho</span> - Preço: <span>3</span>€</li>
 							</ul>
-						</div>
+						</section>
 					</div>
 
-					<!-- AREA ARRASTO -->
+					<!-- WRAPPER AREA ARRASTO -->
 					<div  class="pure-u-5-8 center" style="margin-left:7%; ">
 
 						<div id="dialogApagar" title="Limpar o pedido?">
-						  <p>Tem a certeza que quer apagar os itens selecionados?</p>
+							<p>Tem a certeza que quer apagar os itens selecionados?</p>
 						</div>
 
 						<div id="dialogComprar" title="Confirmar o pedido?">
-						  <p>Tem a certeza que quer comprar os itens selecionados?</p>
+							<p>Tem a certeza que quer comprar os itens selecionados?</p>
 						</div>
 
-							<h3 style="color:#fff;">Arraste para a área abaixo para encomendar</h3>
+						<h3 style="text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;"
+						class="flash flash-white">Arraste para a área abaixo para encomendar</h3>
+						<!-- WRAPPER BOTOES -->
 						<div class="pure-u-5-8 center" style="margin-bottom:3%;">
+							<!--BOTAO REMOVER -->
 							<button id="removeItens" style="margin-right:4%;" class="pure-button pure-button-disabled pure-button-xsmall" disabled="disabled">Remover itens</button>
+							<!--BOTAO FAZER PEDIDO -->
 							<button id="fazPedido" class="pure-button pure-button-disabled pure-button-xsmall" disabled="disabled">Fazer Pedido</button>
 						</div>
-						<div id="area_arrasto" class="pure-u-5-8 sortable stitched" align="left" style="padding-left:3%;">
-						<p style="float:right; padding-right:5%">
-						<span id="total_compra">Total: 0€</span>
-						<span id="total_itens">Qtd: 0</span>
-						</p></div>
+
+						<!-- AREA DE ARRASTO -->
+						<div id="area_arrasto" class="pure-u-5-8 stitched basket" style="padding:3%;">
+							<div class="basket_list">
+								<div class="head">
+									<span class="name">Produto</span>
+									<span class="count">Quantidade</span>
+								</div>
+								<ul></ul>
+							</div>
+							<div id="total_pedido" style="text-align:right" class="price">Total: <span>0</span>€</div>
+						</div>
+		
+						
 					</div>
 				</div>
 
 				<div id="musica_tabela" class="pure-u-5-8 center" style="display:none; margin-left: 7%">
-
 					<h1>Músicas</h1>
-					<h3>Lista de Reprodução</h3>
+					<h3>A Tocar</h3>
 
 					<ul class="clear-padding">
 						<li id="playing" class="musicas" >
@@ -126,43 +136,55 @@
 
 					<ul class="clear-padding">
 						<li class="musicas" >
-							SRV - Voodoo Child (Slight Return)
-							<img id="pic0"  class="votar_bt align-middle" alt="votar" src="resources/votar_button.png" onClick="votarMusica('pic0');" width="9%" height="9%">
-							<img id="15v"  class="nvotos align-middle" alt="15 votos" src="resources/15votos.png" width="9%" height="9%">
-							<br>Duração : 7:59</li>
-
-						<li class="musicas" >
 							Eric Clapton - Cocaine
 							<img id="pic1" class="votar_bt align-middle" alt="votar" src="resources/votar_button.png" onClick="votarMusica('pic1');" width="9%" height="9%">
-							<img id="10v"  class="nvotos align-middle" alt="10 votos" src="resources/10votos.png" width="9%" height="9%">
+							<img id="1v"  class="nvotos align-middle" alt="10 votos" src="resources/10votos.png" width="9%" height="9%">
 							<br>Duração : 6:24</li>
 
 						<li class="musicas" >
 							Kavinsky - Nightcall
 							<img id="pic2" class="votar_bt align-middle" alt="votar" src="resources/votar_button.png" onClick="votarMusica('pic2');" width="9%" height="9%">
-							<img id="9v"  class="nvotos align-middle" alt="9 votos" src="resources/9votos.png" width="9%" height="9%">
+							<img id="2v"  class="nvotos align-middle" alt="10 votos" src="resources/10votos.png" width="9%" height="9%">
 							<br>Duração : 3:45</li>
+							
+						<li class="musicas" >
+							SRV - Voodoo Child (Slight Return)
+							<img id="pic0"  class="votar_bt align-middle" alt="votar" src="resources/votar_button.png" onClick="votarMusica('pic0');" width="9%" height="9%">
+							<img id="0v"  class="nvotos align-middle" alt="15 votos" src="resources/9votos.png" width="9%" height="9%">
+							<br>Duração : 7:59</li>
+
 					</ul>
 				</div>
 			</div>
 
 			<div class="pure-u-1-12 center">
 
-				<img class="ajuda" src="resources/lifebuoy-blue.png" onClick="openHelp(this)" alt="ajuda"  width="45%" height="45%">
-				<p class="ajuda" style="letter-spacing:normal;" onClick="openHelp(this)">Ajuda</p>
+				<img class="ajuda" src="resources/lifebuoy-blue.png" onClick="openHelp(this)" alt="ajuda"  width="70%" height="70%">
+				<p></p>
 
-				<div id="conta_talao" class="pure-u-1-12">
+				<div id="conta_talao" align="left" style="padding-bottom:2%">
 					<h6 id="conta_titulo">Conta</h6>
-					<p>
-						<span id="total_conta_itens">Qtd: <span>0</span></span>
-						<span id="total_conta">Total: <span>0</span>€</span>
+
+					<p id="total_conta_itens" style="margin-left:8%">
+						Comprou
+						<span>0</span>
+						produto(s).
+					</p>
+					<p id="total_conta" style="margin-left:8%">
+						Total:
+						<span>0</span>
+						€
 					</p>
 				</div>
-				<div id="botoesConta" class="pure-u-1-12">
+
+				<div id="botoesConta" class="pure-u-1-6">
 					<div id="dialogConta" title="Detalhes da conta">
 						<p id="dialogCorpoConta"></p>
 					</div>
-				<button id="detalhesConta"  class="pure-button pure-button-disabled pure-button-xsmall" disabled="disabled">Detalhes</button>
+					<!-- BOTAO DETALHES -->
+					<button id="detalhesConta" align="center" 
+						class="pure-button pure-button-disabled pure-button-xsmall"
+						disabled="disabled">Detalhes</button>
 				</div>
 			</div>
 
@@ -185,15 +207,15 @@
 			    $(".item", this).each(function () {
 			        var val = $.trim($(this).text());
 
-			        if (val) {						
-			        	/* para retirar a quantidade e o total */   
+			        if (val) {
+			        	/* para retirar a quantidade e o total (tudo até aos ":") */   
 			        	val = val.replace(/[^:]*:/ , "");
 			        	val = parseFloat(val.match(/[0-9]+.?[0-9]*/));
 			            sum += !isNaN(val) ? val : 0;
-			             ++itens;
-			        }			       
+			            ++itens;
+			        }
 			    });
-			    if (old < sum) 
+			    if (old < sum)
 			    {
 			    $("#removeItens").addClass("pure-button pure-button-xsmall").removeClass("pure-button-disabled");
 			    $("#removeItens").prop('disabled', false);
@@ -206,4 +228,97 @@
   		  }
 	});
 	</script>
+	
+	<!-- faz o carrinho de compras  -->
+	<script>
+    $(function () {
+
+		// jQuery UI Draggable
+		$(".product li").draggable({
+		
+			// brings the item back to its place when dragging is over
+			revert:true,
+		
+			// once the dragging starts, we decrease the opactiy of other items
+			// Appending a class as we do that with CSS
+			drag:function () {
+				$(this).addClass("active");
+				$(this).closest(".product").addClass("active");
+			},
+		
+			// removing the CSS classes once dragging is over.
+			stop:function () {
+				$(this).removeClass("active").closest(".product").removeClass("active");
+			}
+		});
+
+        // jQuery Ui Droppable
+		$(".basket").droppable({
+		
+			// The class that will be appended to the to-be-dropped-element (basket)
+			activeClass:"active",
+		
+			// The class that will be appended once we are hovering the to-be-dropped-element (basket)
+			hoverClass:"hover",
+		
+			// The acceptance of the item once it touches the to-be-dropped-element basket
+			// For different values http://api.jqueryui.com/droppable/#option-tolerance
+			tolerance:"touch",
+			drop:function (event, ui) {
+		
+				var basket = $(this),
+						move = ui.draggable,
+						item = move.attr("data-id"),
+						itemId = basket.find("ul li[data-id='" + move.attr("data-id") + "']");
+		
+				// To increase the value by +1 if the same item is already in the basket
+				if (itemId.html() != null) {
+					itemId.find("input").val(parseInt(itemId.find("input").val()) + 1);
+				}
+				else {
+					// Add the dragged item to the basket
+					addBasket(basket, move);
+		
+					// Updating the quantity by +1" rather than adding it to the basket
+					move.find("input").val(parseInt(move.find("input").val()) + 1);
+
+					//Fui eu a adicionar o que esta abaixo
+					$("#removeItens").addClass("pure-button pure-button-xsmall").removeClass("pure-button-disabled");
+			    	$("#removeItens").prop('disabled', false);
+			    	$("#fazPedido").addClass("pure-button pure-button-xsmall").removeClass("pure-button-disabled");
+			    	$("#fazPedido").prop('disabled', false); 
+				}
+
+				if (item < 6) {
+				$('#total_pedido').html("Total: <span>" + (parseFloat($("#total_pedido>span").text()) + parseFloat($('#lista_bebidas li:nth-child(' + item + ') span:last-child').text())) + "</span>€"); // como adicionar um total é só continuar a partir daqui
+				}else{
+					$('#total_pedido').html("Total: <span>" + (parseFloat($("#total_pedido>span").text()) + parseFloat($('#lista_comidas li:nth-child(' + (item - 5) + ') span:last-child').text())) + "</span>€"); // como adicionar um total é só continuar a partir daqui
+				};
+			}
+		});
+
+        // This function runs onc ean item is added to the basket
+        function addBasket(basket, move) {
+        	var val = move.text();
+        	val = val.replace(/[^:]*:/ , "");
+			val = parseFloat(val.match(/[0-9]+.?[0-9]*/));
+
+			basket.find("ul").append('<li data-id="' + move.attr("data-id") + '"' + 'data-attr="' + val +'" >'
+					+ '<span class="name">' + move.find("span").html() + '</span>'
+					+ '<input class="count" value="1" type="text">'
+					+ '<button class="delete">X</button>');
+		}	
+
+
+        // The function that is triggered once delete button is pressed
+        $("#area_arrasto").on("click", ".delete", function () {
+
+        	$('#total_pedido').html("Total: <span>" + (parseFloat($("#total_pedido>span").text()) - 
+        		($(this).parent().find("input").val() * $(this).parent().data("attr"))) + "</span>€");
+
+			$(this).parent().remove();
+		});
+
+    });
+</script>
 </html>
