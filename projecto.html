@@ -6,231 +6,289 @@
 	<link rel="stylesheet" type='text/css' href="css/normalize.css">
 	<link rel="stylesheet" type='text/css' href="css/pure-min.css">
 	<link rel="stylesheet" type='text/css' href="css/style.css">
-	<link rel="stylesheet" href="css/font-awesome-4.0.3/css/font-awesome.min.css">
+	<link href="css/font-awesome-4.0.3/css/font-awesome.css" rel="stylesheet">
+
 	<link rel="stylesheet" href="jquery-ui-1.10.3/css/ui-lightness/jquery-ui-1.10.3.custom.css">
 	<script src="jquery-ui-1.10.3/js/jquery-1.9.1.js"></script>
 	<script src="jquery-ui-1.10.3/js/jquery-ui-1.10.3.custom.js"></script>
-	<script src="javascript.js"></script>
+	<!--[if IE]>
+	<script type="text/javascript" src="js/excanvas.js"></script>
+	<![endif]-->
+	<script type="text/javascript" src="js/coolclock.js"></script>
+	<script type="text/javascript" src="js/moreskins.js"></script>
+	<script src="js/javascript.js"></script>
 </head>
 <body>
 	<div class="pure-g-r">
 		<div class="pure-u-1 min-width">
+			<!-- AJUDA -->
+			<div id="help" onClick="$(this).toggle();"
+			style="position: absolute; width: 96%; height: 600px; padding:1% 2%; overflow:hidden; display:none;" 
+			class="fakewindowcontain">
+				<div class="ui-overlay">
+					<div class="ui-widget-overlay"></div>
+					<div class="ui-widget-shadow ui-corner-all" 
+					style="width: 402px; height: 202px; position: absolute; top:37%; left:37%;"></div>
+				</div>
+				<div style="position: absolute; width: 380px; height: 180px; top:37%; left:37%; padding: 10px;" 
+				class="ui-widget ui-widget-content ui-corner-all">
+					<p>
+						Este é o nosso futuro menu de ajuda. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima, quae quibusdam expedita pariatur non sapiente eaque officiis harum. Expedita, reprehenderit qui et ut repellat voluptates consectetur quam tempore cumque culpa.
+					</p>
+				</div>
+			</div>
 			<div class="pure-u-1">
 				<header id="header"></header>
 			</div>
 
 			<aside id="fillerdiv" class="pure-u-1-5">
-				<iframe src="http://free.timeanddate.com/clock/i3vk7o26/n133/szw110/szh110/hbw0/hfc000/cf100/hgr0/hwc000/fav0/fiv0/mqcfff/mql15/mqw4/mqd94/mhcfff/mhl15/mhw4/mhd94/mmv0/hhcbbb/hmcddd" width="112" height="112" style="border-style:none;"></iframe>
-				<!-- RELOGIO -->
-				<div style="padding-top:2%; padding-down:25%" id="clockbox"></div>
 
-				<br>
+				<canvas id="clockid" class="CoolClock:barISTa:60"></canvas>
+				<!--<div style="padding-top:2%; padding-down:25%" id="clockbox"></div>
+			<iframe src="http://free.timeanddate.com/clock/i3vk7o26/n133/szw110/szh110/hbw0/hfc000/cf100/hgr0/hwc000/fav0/fiv0/mqcfff/mql15/mqw4/mqd94/mhcfff/mhl15/mhw4/mhd94/mmv0/hhcbbb/hmcddd" width="112" height="112" style="border-style:none;"></iframe>
+			-->
+			<!-- RELOGIO -->
+			<div>
+				<script type="text/javascript">new imageclock.display();</script>
+			</div>
+			<!-- RELOGIO -->
+			<div style="padding-top:2%; padding-down:25%" id="clockbox"></div>
 
-				<!-- AR CONDICIONADO -->
-				<img src="resources/relogioMENOS.png" alt="menos" id="menos" class="arcondicionado"	onclick="regulaTemp(this);">
-				<p class="arcondicionado" style="cursor: default;"	id="temperatura">20°C</p>
-				<img src="resources/relogioMAIS.png" alt="mais" id="mais" class="arcondicionado"	onclick="regulaTemp(this);">
+			<br>
 
-				<br>
-				<!-- AC POPUP-->
-				<div id="AC_msg_container" onclick="escondeMensagem();" class="ui-state-highlight ui-corner-all center" style="padding: 0 .7em; margin-right:17%; display:none">
-					<p>
-						<span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
-						<span id="mensagemAC"></span>
-					</p>
+			<!-- AR CONDICIONADO -->
+			<img src="resources/relogioMENOS.png" alt="menos" id="menos" class="arcondicionado"	onclick="regulaTemp(this);">
+			<p class="arcondicionado" style="cursor: default;"	id="temperatura">20°C</p>
+			<img src="resources/relogioMAIS.png" alt="mais" id="mais" class="arcondicionado"	onclick="regulaTemp(this);">
+
+			<br>
+			<!-- AC POPUP-->
+			<div id="AC_msg_container" onclick="escondeMensagem();" class="ui-state-highlight ui-corner-all center" style="padding: 0 .7em; margin-right:17%; display:none">
+				<p>
+					<span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
+					<span id="mensagemAC"></span>
+				</p>
+			</div>
+
+			<div style="padding-top: 25px;">
+				<h5>A tocar:</h5>
+				<span id="tocar"></span>
+			</div>
+
+		</aside>
+		<!-- Corpo do meio (Botoes, Ementa, Musica, etc) -->
+		<div id="mdiv" class="pure-u-5-8">
+
+			<div id="menu" class="pure-u-5-8 center" style="padding-left:0%; ">
+				<img id="barista" class="menu" onClick="switchMenus();" src="resources/barista_button.png"	alt="barista">
+				<img id="ementa" class="menu" 
+					onClick="switchEmenta(); checkMenusOpen(1); textObject.flash($('.flash'), 'colour', 700);"
+						src="resources/ementa_button.png" alt="ementa" style="display:none">
+				<img id="conta" class="menu" onClick="switchMenus(); checkMenusOpen(4);" src="resources/eventos_button.png"	alt="conta" style="display:none">
+				<img id="musica" class="menu" onClick="switchMusica(); checkMenusOpen(5);" src="resources/musica_button.png"	alt="musica" style="display:none">
+				<img id="jogos" class="menu" onClick="switchMenus(); checkMenusOpen(2);" src="resources/jogos_button.png"	alt="jogos" style="display:none">
+				<img id="voltar" class="menu" onClick="switchMenus(); checkMenusOpen(3);" src="resources/voltar_button.png"	alt="voltar" style="display:none"></div>
+
+			<div id="wrapper_ementa" class="clear" style="display: none">
+				<div id="ementa_tabela" class="pure-u-5-8 center" style="margin-left:7%; ">
+					<h1  style="margin: 0 auto 0 40%;" class="clear-padding" align="left" >Ementa</h1>
+
+					<section class="pure-u-2-5 align-left product">
+						<h3 style="padding-left:15%">Bebidas</h3>
+
+						<ul id="lista_bebidas" class="clear-padding clear" style="padding-left:15%" >
+							<li data-id="1" class="draggable item li_cursor_m">
+								<span>Café</span>
+								- Preço:
+								<span>0.5</span>
+								€
+							</li>
+							<li data-id="2" class="draggable item li_cursor_m">
+								<span>Cerveja (33cl)</span>
+								- Preço:
+								<span>1</span>
+								€
+							</li>
+							<li data-id="3" class="draggable item li_cursor_m">
+								<span>Sangria (33cl)</span>
+								- Preço:
+								<span>2</span>
+								€
+							</li>
+							<li data-id="4" class="draggable item li_cursor_m">
+								<span>Shot</span>
+								- Preço:
+								<span>2</span>
+								€
+							</li>
+							<li data-id="5" class="draggable item li_cursor_m">
+								<span>Martini</span>
+								- Preço:
+								<span>4.5</span>
+								€
+							</li>
+						</ul>
+					</section>
+
+					<section class="pure-u-2-5 align-left product"  style="padding-left: 14%; float:center"	>
+						<h3>Comida</h3>
+						<ul id="lista_comidas" class="clear-padding clear">
+							<li data-id="6" class="draggable item li_cursor_m">
+								<span>Amendoins</span>
+								- Preço:
+								<span>1</span>
+								€
+							</li>
+							<li data-id="7" class="draggable item li_cursor_m">
+								<span>Tosta Mista</span>
+								- Preço:
+								<span>2.5</span>
+								€
+							</li>
+							<li data-id="8" class="draggable item li_cursor_m">
+								<span>Hamburguer</span>
+								- Preço:
+								<span>5</span>
+								€
+							</li>
+							<li data-id="9" class="draggable item li_cursor_m">
+								<span>Bitoque</span>
+								- Preço:
+								<span>7</span>
+								€
+							</li>
+							<li data-id="10" class="draggable item li_cursor_m">
+								<span>Pão de Alho</span>
+								- Preço:
+								<span>3</span>
+								€
+							</li>
+						</ul>
+					</section>
 				</div>
 
-				<div style="padding-top: 25px;">
-					<h5>A tocar:</h5>
-					<span id="tocar"></span>
-				</div>
+				<!-- WRAPPER AREA ARRASTO -->
+				<div class="pure-u-5-8 center" style="margin-left:7%; ">
 
-			</aside>
-			<!-- Corpo do meio (Botoes, Ementa, Musica, etc) -->
-			<div id="mdiv" class="pure-u-5-8">
-
-				<div id="menu" class="pure-u-5-8 center" style="padding-left:0%; ">
-					<img id="barista" class="menu" onClick="switchMenus();" src="resources/barista_button.png"	alt="barista">
-					<img id="ementa" class="menu" onClick="switchEmenta(); checkMenusOpen(1);" src="resources/ementa_button.png"	alt="ementa" style="display:none">
-					<img id="conta" class="menu" onClick="switchMenus(); checkMenusOpen(4);" src="resources/eventos_button.png"	alt="conta" style="display:none">
-					<img id="musica" class="menu" onClick="switchMusica(); checkMenusOpen(5);" src="resources/musica_button.png"	alt="musica" style="display:none">
-					<img id="jogos" class="menu" onClick="switchMenus(); checkMenusOpen(2);" src="resources/jogos_button.png"	alt="jogos" style="display:none">
-					<img id="voltar" class="menu" onClick="switchMenus(); checkMenusOpen(3);" src="resources/voltar_button.png"	alt="voltar" style="display:none"></div>
-
-				<div id="wrapper_ementa" class="clear" style="display: none">
-					<div id="ementa_tabela" class="pure-u-5-8 center" style="margin-left:7%; ">
-						<h1  style="margin: 0 auto 0 40%;" class="clear-padding" align="left" >Ementa</h1>
-
-						<section class="pure-u-2-5 align-left product">
-							<h3 style="padding-left:15%">Bebidas</h3>
-
-							<ul id="lista_bebidas" class="clear-padding clear" style="padding-left:15%" >
-								<li data-id="1" class="draggable item li_cursor_m"><span>Café</span> - Preço: <span>0.5</span>€</li>
-								<li data-id="2" class="draggable item li_cursor_m"><span>Cerveja (33cl)</span> - Preço: <span>1</span>€</li>
-								<li data-id="3" class="draggable item li_cursor_m"><span>Sangria (33cl)</span> - Preço: <span>2</span>€</li>
-								<li data-id="4" class="draggable item li_cursor_m"><span>Shot</span> - Preço: <span>2</span>€</li>
-								<li data-id="5" class="draggable item li_cursor_m"><span>Martini</span> - Preço: <span>4.5</span>€</li>
-							</ul>
-						</section>
-
-						<section class="pure-u-2-5 align-left product"  style="padding-left: 14%; float:center"	>
-							<h3>Comida</h3>
-							<ul id="lista_comidas" class="clear-padding clear">
-								<li data-id="6" class="draggable item li_cursor_m"><span>Amendoins</span> - Preço: <span>1</span>€</li>
-								<li data-id="7" class="draggable item li_cursor_m"><span>Tosta Mista</span> - Preço: <span>2.5</span>€</li>
-								<li data-id="8" class="draggable item li_cursor_m"><span>Hamburguer</span> - Preço: <span>5</span>€</li>
-								<li data-id="9" class="draggable item li_cursor_m"><span>Bitoque</span> - Preço: <span>7</span>€</li>
-								<li data-id="10" class="draggable item li_cursor_m"><span>Pão de Alho</span> - Preço: <span>3</span>€</li>
-							</ul>
-						</section>
+					<div id="dialogApagar" title="Limpar o pedido?">
+						<p>Tem a certeza que quer apagar os itens selecionados?</p>
 					</div>
 
-					<!-- WRAPPER AREA ARRASTO -->
-					<div  class="pure-u-5-8 center" style="margin-left:7%; ">
+					<div id="dialogComprar" title="Confirmar o pedido?">
+						<p>Tem a certeza que quer comprar os itens selecionados?</p>
+					</div>
 
-						<div id="dialogApagar" title="Limpar o pedido?">
-							<p>Tem a certeza que quer apagar os itens selecionados?</p>
-						</div>
-
-						<div id="dialogComprar" title="Confirmar o pedido?">
-							<p>Tem a certeza que quer comprar os itens selecionados?</p>
-						</div>
-
-						<h3 style="text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;"
+					<h3 style="text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;"
 						class="flash flash-white">Arraste para a área abaixo para encomendar</h3>
-						<!-- WRAPPER BOTOES -->
-						<div class="pure-u-5-8 center" style="margin-bottom:3%;">
-							<!--BOTAO REMOVER -->
-							<button id="removeItens" style="margin-right:4%;" class="pure-button pure-button-disabled pure-button-xsmall" disabled="disabled">Remover itens</button>
-							<!--BOTAO FAZER PEDIDO -->
-							<button id="fazPedido" class="pure-button pure-button-disabled pure-button-xsmall" disabled="disabled">Fazer Pedido</button>
-						</div>
+					<!-- WRAPPER BOTOES -->
+					<div class="pure-u-11-12 center" style="margin-bottom:3%;">
+						<!--BOTAO REMOVER -->
+						<button id="removeItens" style="margin-right:4%;" class="pure-button pure-button-disabled pure-button-xsmall" disabled="disabled"> <i class="fa fa-exclamation-triangle"></i>
+							Remover itens
+						</button>
+						<!--BOTAO FAZER PEDIDO -->
+						<button id="fazPedido" class="pure-button pure-button-disabled pure-button-xsmall" 
+								disabled="disabled"> <i class="fa fa-credit-card"></i>
+							Fazer Pedido
+						</button>
+					</div>
 
-						<!-- AREA DE ARRASTO -->
-						<div id="area_arrasto" class="pure-u-5-8 stitched basket" style="padding:3%;">
-							<div class="basket_list">
-								<div class="head">
-									<span class="name">Produto</span>
-									<span class="count">Quantidade</span>
-								</div>
-								<ul></ul>
+					<!-- AREA DE ARRASTO -->
+					<div id="area_arrasto" class="pure-u-5-8 stitched basket" style="padding:3%;">
+						<div class="basket_list">
+							<div class="head">
+								<span class="name">Produto</span>
+								<span class="count">Quantidade</span>
 							</div>
-							<div id="total_pedido" style="text-align:right" class="price">Total: <span>0</span>€</div>
+							<ul></ul>
 						</div>
-		
-						
+						<div id="total_pedido" style="text-align:right" class="price">
+							Total:
+							<span>0</span>
+							€
+						</div>
 					</div>
-				</div>
 
-				<div id="musica_tabela" class="pure-u-5-8 center" style="display:none; margin-left: 7%">
-					<h1>Músicas</h1>
-					<h3>A Tocar</h3>
-
-					<ul class="clear-padding">
-						<li id="playing" class="musicas" >
-							Hans Zimmer - Time (Inception OST)
-							<br>Duração : 4:31</li>
-					</ul>
-
-					<h3>Músicas Disponíveis</h3>
-
-					<ul class="clear-padding">
-						<li class="musicas" >
-							Eric Clapton - Cocaine
-							<img id="pic1" class="votar_bt align-middle" alt="votar" src="resources/votar_button.png" onClick="votarMusica('pic1');" width="9%" height="9%">
-							<img id="1v"  class="nvotos align-middle" alt="10 votos" src="resources/10votos.png" width="9%" height="9%">
-							<br>Duração : 6:24</li>
-
-						<li class="musicas" >
-							Kavinsky - Nightcall
-							<img id="pic2" class="votar_bt align-middle" alt="votar" src="resources/votar_button.png" onClick="votarMusica('pic2');" width="9%" height="9%">
-							<img id="2v"  class="nvotos align-middle" alt="10 votos" src="resources/10votos.png" width="9%" height="9%">
-							<br>Duração : 3:45</li>
-							
-						<li class="musicas" >
-							SRV - Voodoo Child (Slight Return)
-							<img id="pic0"  class="votar_bt align-middle" alt="votar" src="resources/votar_button.png" onClick="votarMusica('pic0');" width="9%" height="9%">
-							<img id="0v"  class="nvotos align-middle" alt="15 votos" src="resources/9votos.png" width="9%" height="9%">
-							<br>Duração : 7:59</li>
-
-					</ul>
 				</div>
 			</div>
 
-			<div class="pure-u-1-12 center">
+			<div id="musica_tabela" class="pure-u-5-8 center" style="display:none; margin-left: 7%">
+				<h1>Músicas</h1>
+				<h3>A Tocar</h3>
 
-				<img class="ajuda" src="resources/lifebuoy-blue.png" onClick="openHelp(this)" alt="ajuda"  width="70%" height="70%">
-				<p></p>
+				<ul class="clear-padding">
+					<li id="playing" class="musicas" >
+						Hans Zimmer - Time (Inception OST)
+						<br>Duração : 4:31</li>
+				</ul>
 
-				<div id="conta_talao" align="left" style="padding-bottom:2%">
-					<h6 id="conta_titulo">Conta</h6>
+				<h3>Músicas Disponíveis</h3>
 
-					<p id="total_conta_itens" style="margin-left:8%">
-						Comprou
-						<span>0</span>
-						produto(s).
-					</p>
-					<p id="total_conta" style="margin-left:8%">
-						Total:
-						<span>0</span>
-						€
-					</p>
+				<ul class="clear-padding">
+					<li class="musicas" >
+						Eric Clapton - Cocaine
+						<img id="pic1" class="votar_bt align-middle" alt="votar" src="resources/votar_button.png" onClick="votarMusica('pic1');" width="9%" height="9%">
+						<img id="1v"  class="nvotos align-middle" alt="10 votos" src="resources/10votos.png" width="9%" height="9%">
+						<br>Duração : 6:24</li>
+
+					<li class="musicas" >
+						Kavinsky - Nightcall
+						<img id="pic2" class="votar_bt align-middle" alt="votar" src="resources/votar_button.png" onClick="votarMusica('pic2');" width="9%" height="9%">
+						<img id="2v"  class="nvotos align-middle" alt="10 votos" src="resources/10votos.png" width="9%" height="9%">
+						<br>Duração : 3:45</li>
+
+					<li class="musicas" >
+						SRV - Voodoo Child (Slight Return)
+						<img id="pic0"  class="votar_bt align-middle" alt="votar" src="resources/votar_button.png" onClick="votarMusica('pic0');" width="9%" height="9%">
+						<img id="0v"  class="nvotos align-middle" alt="15 votos" src="resources/9votos.png" width="9%" height="9%">
+						<br>Duração : 7:59</li>
+
+				</ul>
+			</div>
+		</div>
+
+		<div class="pure-u-1-12 center">
+
+			<img class="ajuda" src="resources/lifebuoy-blue.png" onClick="$('#help').toggle();" 
+			alt="ajuda" width="70%" height="70%">
+			<p></p>
+
+			<div id="conta_talao" align="left" style="padding-bottom:2%">
+				<h6 id="conta_titulo">Conta</h6>
+
+				<p id="total_conta_itens" style="margin-left:8%">
+					Comprou
+					<span>0</span>
+					produto(s).
+				</p>
+				<p id="total_conta" style="margin-left:8%">
+					Total:
+					<span>0</span>
+					€
+				</p>
+			</div>
+
+			<div id="botoesConta" class="pure-u-11-12">
+				<div id="dialogConta" title="Detalhes da conta">
+					<ul id="dialogCorpoConta" class="clear-padding"></ul>
 				</div>
-
-				<div id="botoesConta" class="pure-u-1-6">
-					<div id="dialogConta" title="Detalhes da conta">
-						<p id="dialogCorpoConta"></p>
-					</div>
-					<!-- BOTAO DETALHES -->
-					<button id="detalhesConta" align="center" 
+				<!-- BOTAO DETALHES -->
+				<button id="detalhesConta" align="center" 
 						class="pure-button pure-button-disabled pure-button-xsmall"
-						disabled="disabled">Detalhes</button>
-				</div>
+						disabled="disabled">
+					<i class="fa fa-file-text-o"></i>
+					Detalhes
+				</button>
 			</div>
-
 		</div>
 	</div>
+</div>
 
 </body>
-	<script type="text/javascript">window.onload=GetClock;</script>
-	<script type="text/javascript">$("#playing").clone().appendTo($("#tocar"));</script>
-	<!-- Actualiza o total e qtd -->
-	<script type="text/javascript">
-	var old = 0;
-	$( "#area_arrasto" ).bind(
-	{
-		  mouseout: function()
-		  {
-		  	$("#area_arrasto").each(function () {
-			    var sum = 0;
-			    var itens = 0;
-			    $(".item", this).each(function () {
-			        var val = $.trim($(this).text());
-
-			        if (val) {
-			        	/* para retirar a quantidade e o total (tudo até aos ":") */   
-			        	val = val.replace(/[^:]*:/ , "");
-			        	val = parseFloat(val.match(/[0-9]+.?[0-9]*/));
-			            sum += !isNaN(val) ? val : 0;
-			            ++itens;
-			        }
-			    });
-			    if (old < sum)
-			    {
-			    $("#removeItens").addClass("pure-button pure-button-xsmall").removeClass("pure-button-disabled");
-			    $("#removeItens").prop('disabled', false);
-			    $("#fazPedido").addClass("pure-button pure-button-xsmall").removeClass("pure-button-disabled");
-			    $("#fazPedido").prop('disabled', false);
-				};
-			    $("#total_compra").html("Total: <span>" + sum + "</span>€");
-			    $("#total_itens" ).html("Qtd: <span>" + itens + "</span>");
-			});
-  		  }
-	});
-	</script>
-	
-	<!-- faz o carrinho de compras  -->
-	<script>
+<script type="text/javascript">window.onload=GetClock;</script>
+<script type="text/javascript">$("#playing").clone().appendTo($("#tocar"));</script>
+<!-- faz o carrinho de compras  -->
+<script>
     $(function () {
 
 		// jQuery UI Draggable
@@ -297,7 +355,7 @@
 			}
 		});
 
-        // This function runs onc ean item is added to the basket
+        // This function runs once an item is added to the basket
         function addBasket(basket, move) {
         	var val = move.text();
         	val = val.replace(/[^:]*:/ , "");
@@ -311,12 +369,21 @@
 
 
         // The function that is triggered once delete button is pressed
-        $("#area_arrasto").on("click", ".delete", function () {
+        $("#area_arrasto").on("click", ".delete", function () 
+        {
 
+        	if ($("#area_arrasto ul li").length > 1) 
+        	{
         	$('#total_pedido').html("Total: <span>" + (parseFloat($("#total_pedido>span").text()) - 
         		($(this).parent().find("input").val() * $(this).parent().data("attr"))) + "</span>€");
 
 			$(this).parent().remove();
+
+			}
+			else
+			{
+				limpaPedidos();
+			}
 		});
 
     });

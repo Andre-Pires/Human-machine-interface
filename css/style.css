@@ -61,13 +61,11 @@ li{
 
 #detalhesConta{
 	padding: 0.5em 0.7em;
-/*	margin-top: 80%; */
-/*	margin-left: 60%; */
 }
 
 #botoesConta{
 	margin-top: 3%;
-	margin-right:58%;
+	margin-right:auto;
 }
 
 #title{
@@ -179,6 +177,23 @@ li{
 	color:#FFFFFF;
 }
 
+.#dialogCorpoConta li div.text {
+    display: block;
+    float: left;
+    width: 165px;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    -webkit-transition: width .2s ease;
+    -moz-transition: width .2s ease;
+    -o-transition: width .2s ease;
+    -ms-transition: width .2s ease;
+    transition: width .2s ease;
+}
+
 /* ------------------------------ Drag 'n Drop jQuery -----------------------*/
 
  
@@ -233,7 +248,10 @@ li{
 
 /* .head */
 
-.basket ul { padding-bottom: 10px }
+.basket ul { 
+    padding-bottom: 10px;
+    padding-left: 0px;
+}
 
 .basket ul li {
     position: relative;
@@ -241,6 +259,7 @@ li{
     overflow: hidden;
     margin: 0 10px;
     height: 26px;
+    text-align: left;
     line-height: 32px;
     border-bottom: 1px dashed #eee;
 }
@@ -281,7 +300,7 @@ li{
 .basket ul li button.delete {
     position: absolute;
     right: 30px;
-    top: 3px;
+    top: 7px;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
     filter: alpha(opacity = 0);
     opacity: 0;
