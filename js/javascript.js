@@ -163,6 +163,20 @@ temperatura = 20;
 
 		}
 
+		function switchDisplay(obj)
+		{			
+			
+			if (obj.style.display === "none") 
+			{
+				obj.style.display="block";
+			}
+			else
+			{
+				obj.style.display="none";
+			};
+
+		}
+
 // 1 - ementa, 2 - jogos, 3 - eventos, 4 - talao, 5 - musica
 		function checkMenusOpen(n)
 		{			
@@ -257,15 +271,20 @@ temperatura = 20;
 			$("#area_arrasto").each(function () {
 				    $("div ul li", this).each(function () {
 				        var val = $.trim($(this).text()).replace(/X/ , " ");
+				        val = val.replace(/\+\-/, "");
 						var qtd = $("input", this).val();
 
 				        if (val)
 				        {
 				        	$("#dialogCorpoConta").append(
-				        		'<li><div id="text" class="pure-u-7-12">' 
-				        		+ val + '</div>'
+				        		'<li>'
+				        		+ '<div id="text" class="pure-u-7-12">' 
+				        		+   val 
+				        		+ '</div>'
 				        		+ '<div class="pure-u-5-12" style="text-align:right">Qtd:' 
-				        		+ qtd +'</div></li>');
+				        		+   qtd 
+				        		+ '</div>' + 
+				        	    '</li>');
 				        }
 				    });
 				});
@@ -277,6 +296,7 @@ temperatura = 20;
 		$(function() {
 		    $( "#dialogComprar" ).dialog({
 		      autoOpen: false,
+		      width:'auto',
 		      show: {
 		        effect: "drop",
 		        duration: 700
@@ -330,6 +350,7 @@ temperatura = 20;
 	  $(function() {
 	    $( "#dialogApagar" ).dialog({
 	      autoOpen: false,
+	      width:'auto',
 	      show: {
 	        effect: "drop",
 	        duration: 700
@@ -388,7 +409,7 @@ temperatura = 20;
     whiteColour : true,
     firstColour : 'flash-white',
     secondColour : 'flash-blue',
-    numtimes : 6,
+    numtimes : 4,
     flash : function(obj, effect, delay) {
         //checka se há um objecto no documento
         if (obj.length > 0) {

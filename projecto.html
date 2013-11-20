@@ -8,7 +8,7 @@
 	<link rel="stylesheet" type='text/css' href="css/style.css">
 	<link href="css/font-awesome-4.0.3/css/font-awesome.css" rel="stylesheet">
 
-	<link rel="stylesheet" href="jquery-ui-1.10.3/css/ui-lightness/jquery-ui-1.10.3.custom.css">
+	<link rel="stylesheet" href="jquery-ui-1.10.3/css/dot-luv/jquery-ui-1.10.3.custom.css">
 	<script src="jquery-ui-1.10.3/js/jquery-1.9.1.js"></script>
 	<script src="jquery-ui-1.10.3/js/jquery-ui-1.10.3.custom.js"></script>
 	<!--[if IE]>
@@ -47,16 +47,20 @@
 				<!--<div style="padding-top:2%; padding-down:25%" id="clockbox"></div>
 			<iframe src="http://free.timeanddate.com/clock/i3vk7o26/n133/szw110/szh110/hbw0/hfc000/cf100/hgr0/hwc000/fav0/fiv0/mqcfff/mql15/mqw4/mqd94/mhcfff/mhl15/mhw4/mhd94/mmv0/hhcbbb/hmcddd" width="112" height="112" style="border-style:none;"></iframe>
 			-->
-			<!-- RELOGIO -->
-			<div>
+			<!-- RELOGIO - Digital -->
+			<!-- <div>
 				<script type="text/javascript">new imageclock.display();</script>
-			</div>
-			<!-- RELOGIO -->
+			</div> -->
+			<!-- RELOGIO - Data-->
 			<div style="padding-top:2%; padding-down:25%" id="clockbox"></div>
 
 			<br>
 
 			<!-- AR CONDICIONADO -->
+			<div style="padding-top: 25px;">
+				<h4>Ar condicionado:</h4>
+			</div>
+
 			<img src="resources/relogioMENOS.png" alt="menos" id="menos" class="arcondicionado"	onclick="regulaTemp(this);">
 			<p class="arcondicionado" style="cursor: default;"	id="temperatura">20°C</p>
 			<img src="resources/relogioMAIS.png" alt="mais" id="mais" class="arcondicionado"	onclick="regulaTemp(this);">
@@ -71,7 +75,7 @@
 			</div>
 
 			<div style="padding-top: 25px;">
-				<h5>A tocar:</h5>
+				<h4>A tocar:</h4>
 				<span id="tocar"></span>
 			</div>
 
@@ -80,88 +84,69 @@
 		<div id="mdiv" class="pure-u-5-8">
 
 			<div id="menu" class="pure-u-5-8 center" style="padding-left:0%; ">
-				<img id="barista" class="menu" onClick="switchMenus();" src="resources/barista_button.png"	alt="barista">
+				<img id="barista" class="menu" onClick="switchMenus();" 
+					src="resources/barista_button.png"	alt="barista">
 				<img id="ementa" class="menu" 
-					onClick="switchEmenta(); checkMenusOpen(1); textObject.flash($('.flash'), 'colour', 700);"
-						src="resources/ementa_button.png" alt="ementa" style="display:none">
-				<img id="conta" class="menu" onClick="switchMenus(); checkMenusOpen(4);" src="resources/eventos_button.png"	alt="conta" style="display:none">
-				<img id="musica" class="menu" onClick="switchMusica(); checkMenusOpen(5);" src="resources/musica_button.png"	alt="musica" style="display:none">
-				<img id="jogos" class="menu" onClick="switchMenus(); checkMenusOpen(2);" src="resources/jogos_button.png"	alt="jogos" style="display:none">
-				<img id="voltar" class="menu" onClick="switchMenus(); checkMenusOpen(3);" src="resources/voltar_button.png"	alt="voltar" style="display:none"></div>
+					onClick="switchEmenta(); checkMenusOpen(1); 
+						textObject.flash($('.flash'), 'colour', 700);"
+					src="resources/ementa_button.png" alt="ementa"   style="display:none">
+				<img id="conta" class="menu" onClick="switchMenus(); checkMenusOpen(4);" 
+					src="resources/eventos_button.png"	alt="conta"  style="display:none">
+				<img id="musica" class="menu" onClick="switchMusica(); checkMenusOpen(5);" 
+					src="resources/musica_button.png"	alt="musica" style="display:none">
+				<img id="jogos" class="menu" onClick="switchMenus(); checkMenusOpen(2);" 
+					src="resources/jogos_button.png"	alt="jogos"  style="display:none">
+				<img id="voltar" class="menu" onClick="switchMenus(); checkMenusOpen(3);" 
+					src="resources/voltar_button.png"	alt="voltar" style="display:none">
+			</div>
 
 			<div id="wrapper_ementa" class="clear" style="display: none">
 				<div id="ementa_tabela" class="pure-u-5-8 center" style="margin-left:7%; ">
-					<h1  style="margin: 0 auto 0 40%;" class="clear-padding" align="left" >Ementa</h1>
+					<h1  style="margin: 0 auto 0;" class="clear-padding"> <!-- align left-->
+						Ementa
+					</h1>
 
 					<section class="pure-u-2-5 align-left product">
 						<h3 style="padding-left:15%">Bebidas</h3>
 
-						<ul id="lista_bebidas" class="clear-padding clear" style="padding-left:15%" >
+						<ul id="lista_bebidas" class="clear-padding clear" 
+						  style="padding-left:15%" >
 							<li data-id="1" class="draggable item li_cursor_m">
-								<span>Café</span>
-								- Preço:
-								<span>0.5</span>
-								€
+								<span>Café</span> - Preço: <span>0.5</span>€
 							</li>
 							<li data-id="2" class="draggable item li_cursor_m">
-								<span>Cerveja (33cl)</span>
-								- Preço:
-								<span>1</span>
-								€
+								<span>Cerveja (33cl)</span> - Preço: <span>1</span>€
 							</li>
 							<li data-id="3" class="draggable item li_cursor_m">
-								<span>Sangria (33cl)</span>
-								- Preço:
-								<span>2</span>
-								€
+								<span>Sangria (33cl)</span> - Preço: <span>2</span>€
 							</li>
 							<li data-id="4" class="draggable item li_cursor_m">
-								<span>Shot</span>
-								- Preço:
-								<span>2</span>
-								€
+								<span>Shot</span> - Preço: <span>2</span>€
 							</li>
 							<li data-id="5" class="draggable item li_cursor_m">
-								<span>Martini</span>
-								- Preço:
-								<span>4.5</span>
-								€
+								<span>Martini</span> - Preço: <span>4.5</span>€
 							</li>
 						</ul>
 					</section>
 
-					<section class="pure-u-2-5 align-left product"  style="padding-left: 14%; float:center"	>
+					<section class="pure-u-2-5 align-left product" 
+					  style="padding-left: 14%; float:center">
 						<h3>Comida</h3>
 						<ul id="lista_comidas" class="clear-padding clear">
 							<li data-id="6" class="draggable item li_cursor_m">
-								<span>Amendoins</span>
-								- Preço:
-								<span>1</span>
-								€
+								<span>Amendoins</span> - Preço: <span>1</span>€
 							</li>
 							<li data-id="7" class="draggable item li_cursor_m">
-								<span>Tosta Mista</span>
-								- Preço:
-								<span>2.5</span>
-								€
+								<span>Tosta Mista</span> - Preço: <span>2.5</span>€
 							</li>
 							<li data-id="8" class="draggable item li_cursor_m">
-								<span>Hamburguer</span>
-								- Preço:
-								<span>5</span>
-								€
+								<span>Hamburguer</span> - Preço: <span>5</span>€
 							</li>
 							<li data-id="9" class="draggable item li_cursor_m">
-								<span>Bitoque</span>
-								- Preço:
-								<span>7</span>
-								€
+								<span>Bitoque</span> - Preço: <span>7</span>€
 							</li>
 							<li data-id="10" class="draggable item li_cursor_m">
-								<span>Pão de Alho</span>
-								- Preço:
-								<span>3</span>
-								€
+								<span>Pão de Alho</span> - Preço: <span>3</span>€
 							</li>
 						</ul>
 					</section>
@@ -171,11 +156,11 @@
 				<div class="pure-u-5-8 center" style="margin-left:7%; ">
 
 					<div id="dialogApagar" title="Limpar o pedido?">
-						<p>Tem a certeza que quer apagar os itens selecionados?</p>
+						<p>Tem a certeza que quer apagar os<br> itens selecionados?</p>
 					</div>
 
 					<div id="dialogComprar" title="Confirmar o pedido?">
-						<p>Tem a certeza que quer comprar os itens selecionados?</p>
+						<p>Tem a certeza que quer comprar os <br> itens selecionados?</p>
 					</div>
 
 					<h3 style="text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;"
@@ -363,8 +348,10 @@
 
 			basket.find("ul").append('<li data-id="' + move.attr("data-id") + '"' + 'data-attr="' + val +'" >'
 					+ '<span class="name">' + move.find("span").html() + '</span>'
-					+ '<input class="count" value="1" type="text">'
-					+ '<button class="delete">X</button>');
+					+ '<button class="delete">X</button>'
+					+ '<button class="add">+</button>'
+					+ '<input class="count" value="1" disabled="disabled" type="text">'
+					+ '<button class="sub">-</button>');
 		}	
 
 
@@ -383,7 +370,43 @@
 			else
 			{
 				limpaPedidos();
+			};
+		});
+
+		 // The function that is triggered once sub button is pressed
+        $("#area_arrasto").on("click", ".sub", function () 
+        {
+
+        	if (parseInt($(this).parent().find("input").val()) > 1) 
+        	{
+	        	$(this).parent().find("input").val(parseInt($(this).parent().find("input").val()) - 1);
+
+	        	$('#total_pedido').html("Total: <span>" + (parseFloat($("#total_pedido>span").text()) - 
+	        		$(this).parent().data("attr")) + "</span>€");
 			}
+			else
+			{
+				$('#total_pedido').html("Total: <span>" + (parseFloat($("#total_pedido>span").text()) - 
+        		$(this).parent().data("attr")) + "</span>€");
+
+        		$(this).parent().remove();
+			};
+
+			if ($("#area_arrasto ul li").length == 0) 
+        	{
+        		limpaPedidos();
+        	};
+		});
+
+
+		 // The function that is triggered once add button is pressed
+        $("#area_arrasto").on("click", ".add", function () 
+        {
+
+        	$(this).parent().find("input").val(parseInt($(this).parent().find("input").val()) + 1);
+
+	        $('#total_pedido').html("Total: <span>" + (parseFloat($("#total_pedido>span").text()) + 
+	        	$(this).parent().data("attr")) + "</span>€");
 		});
 
     });

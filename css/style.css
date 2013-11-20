@@ -298,7 +298,33 @@ li{
 }
 
 .basket ul li button.delete {
-    position: absolute;
+    float: right;
+    right: 30px;
+    top: 7px;
+    vertical-align: middle;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity = 0);
+    opacity: 0;
+    width: 20px;
+    line-height: 20px;
+    height: 20px;
+    text-align: center;
+    font-size: 11px;
+    border: 0;
+    color: #EE5757;
+    background-color: #eee;
+    border-radius: 3px;
+    cursor: pointer;
+    -webkit-transition: opacity .2s ease;
+    -moz-transition: opacity .2s ease;
+    -o-transition: opacity .2s ease;
+    -ms-transition: opacity .2s ease;
+    transition: opacity .2s ease;
+}
+
+.basket ul li button {
+    margin-right: 1%;
+    float: right;
     right: 30px;
     top: 7px;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
@@ -321,18 +347,24 @@ li{
     transition: opacity .2s ease;
 }
 
-.basket ul li:hover button.delete {
+.basket ul li:hover button.delete,
+.basket ul li:hover button.add,
+.basket ul li:hover button.sub {
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     filter: alpha(opacity = 100);
     opacity: 1;
 }
 
-.basket ul li button.delete:hover {
+.basket ul li button.delete :hover,
+.basket ul li button.add :hover,
+.basket ul li button.sub :hover {
     color: #fff;
     background-color: #ffa0a3;
 }
 
-.basket ul li button.delete:active {
+.basket ul li button.delete :active,
+.basket ul li button.add :active,
+.basket ul li button.sub :active {
     color: #fff;
     background-color: #EE5757;
 }
