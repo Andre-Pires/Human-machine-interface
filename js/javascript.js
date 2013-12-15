@@ -69,10 +69,6 @@ var imageclock=new Object()
 
 	}
 
-
-
-
-
 	
 
 		// funcao de estado dos menus do barista
@@ -165,7 +161,6 @@ temperatura = 20;
 
 		function switchDisplay(obj)
 		{			
-			
 			if (obj.style.display === "none") 
 			{
 				obj.style.display="block";
@@ -174,13 +169,11 @@ temperatura = 20;
 			{
 				obj.style.display="none";
 			};
-
 		}
 
 // 1 - ementa, 2 - jogos, 3 - eventos, 4 - talao, 5 - musica
 		function checkMenusOpen(n)
 		{			
-			
 			if(n != 1)
 			{
 				document.getElementById('wrapper_ementa').style.display="none";
@@ -190,53 +183,52 @@ temperatura = 20;
 			{
 				document.getElementById('musica_tabela').style.display="none";
 			}
-
 		}
 
-		//A implementar
-		function openHelp (obj) 
-		{
-			alert("Help: \nIt doesn't do anything yet.");
-		}
-
-
-		var ultimamusica = null;
+//////////////////////////////////////////////
+var ultimamusica = null;
+//////////////////////////////////////////////
 		function votarMusica(name)
 		{
+			// 1º voto
 			if (ultimamusica == null)
 			{
 				document.getElementById(name).src = 'resources/votado_button.png';
 				ultimamusica = name;
-				alteraVotos(name, true);	
+				alteraVotos(name, true);
 			}
+			// if (click != imagem clicada anterior)
 			else if (document.getElementById(name).src.indexOf("resources/votar_button.png") != -1) 
 			{
 				document.getElementById(ultimamusica).src = 'resources/votar_button.png';
 				ultimamusica = name;
 				document.getElementById(name).src = 'resources/votado_button.png';
 				alteraVotos(name, true);
-			} else {
+			} else { // click na mesma imagem
 				document.getElementById(name).src = 'resources/votar_button.png';
 				alteraVotos(name, false);
 			}
 		}
 
-
         function alteraVotos (name, novoVoto) {
-		    var votos = new Array(9, 10, 10);
-			
+			var votos = new Array(9, 10, 10, 8);
+			// defaulta todos os elementos para o numero de votos respectivo
             for (i = 0; i < votos.length; ++i) {
 				document.getElementById(i + 'v').src = 'resources/' + votos[i] +
 				'votos.png';
+				document.getElementById(i + 'v').setAttribute('data-vote', votos[i]);
 			}
-			if (novoVoto) {
-                // recebe "0v", p.ex.
+			if (novoVoto == true) {
+                // recebe "0v" como nome, p.ex.
 				var pos = name.match(/[0-9]+/);
 				var id = pos + 'v';
 				document.getElementById(id).src = 'resources/' + (votos[pos] + 1) +
 					'votos.png';
+				document.getElementById(id).setAttribute('data-vote', votos[pos] + 1);
 			}
 		}
+
+
 
 		function escondeMensagem () {
 			document.getElementById('AC_msg_container').style.display="none";
@@ -249,21 +241,102 @@ temperatura = 20;
 		}
 
 		
-		function limpaPedidos (){
+		function limpaPedidos () {
 
 			document.getElementById('area_arrasto').innerHTML = '<div class="basket_list">\
-								<div class="head">\
-									<span class="name">Produto</span>\
-									<span class="count">Quantidade</span>\
-								</div>\
-								<ul></ul>\
+							<div class="head">\
+								<span class="name">Produto</span>\
+								<span class="count">Quantidade</span>\
 							</div>\
-							<div id="total_pedido" style="text-align:right" class="price">Total: <span>0</span>€</div>';
+							<ul style="overflow-y:auto; height:100px;"></ul>\
+						</div>\
+						<div id="total_pedido" style="text-align:right" class="price">\
+							Total:\
+							<span>0</span>\
+							€\
+						</div>';
 
-			document.getElementById('removeItens').className += " pure-button-disabled";
-			document.getElementById('fazPedido'  ).className += " pure-button-disabled";
+			document.getElementById('removeItens').className = " pure-button-disabled";
+			document.getElementById('fazPedido'  ).className = " pure-button-disabled";
 			document.getElementById('removeItens').disabled = true;
 			document.getElementById('fazPedido'  ).disabled = true;
+		}
+
+		tempo = 0;
+
+		window.setInterval(function(){
+			tempoMusica();
+		}, 1000);
+
+
+		function tempoMusica () {
+
+				tempo++;
+
+			    $( "#barra_musica" ).progressbar({
+			      value: (tempo * 100)/ ((parseInt($("#musica_tabela > ul > li #tempo_total_m").text())*60) 
+			      	+ parseInt($("#musica_tabela > ul > li #tempo_total_s").text())),
+			    });
+
+			    $('#barra_musica').height(10);
+			    $('#barra_musica').width(270);
+
+			    //actualiza os números da música a tocar
+			    var mins = parseInt($("#tempo_total_m").text());
+			    var secs = parseInt($("#tempo_total_s").text());
+				
+				if (secs != 0)
+				{
+					if (secs <= 10) { 
+						$("#tempo_total_s").html("0" + (secs - 1));
+					} else {
+						$("#tempo_total_s").html((secs - 1)); 	
+					}
+				}
+				else if (mins != 0)
+				{
+					if (mins <= 10) {
+						$("#tempo_total_m").html("0" + (mins - 1));
+					} else {
+						$("#tempo_total_m").html((mins - 1));
+					}
+					$("#tempo_total_s").html(59);
+
+				} else {
+					// actualiza a musica a tocar
+					var nomeMusica, mins, secs ,j;
+					var maior = 0;
+					
+					for (j = 0; j <= 3; j++)
+					{
+						if ($("#" + parseInt(j) + "v").data('vote') >= maior) 
+							{
+								maior = $("#" + parseInt(j) + "v").data('vote');
+							};
+					}
+
+					for (j = 0; j <= 3; j++)
+					{
+
+						if ($("#" + parseInt(j) + "v").data('vote') == maior) {
+							nomeMusica = $( "#pic" + parseInt(j) ).parent().children("span").eq(0).html();
+							mins = $( "#pic" + parseInt(j) ).parent().children("span").eq(1).html();
+							secs = $( "#pic" + parseInt(j) ).parent().children("span").eq(2).html();
+							break;
+						}
+					};
+					// replace
+					$("#pic" + parseInt(j)).attr('src' , 'resources/votar_button.png');
+					if ($("#" + parseInt(j) + "v").data('vote') > 8) {
+					$("#" + parseInt(j) + "v").data('vote', $("#" + parseInt(j) + "v").data('vote') - 1);
+					$("#" + parseInt(j) + "v").attr('src', 'resources/' + (maior - 1) + 'votos.png') ;
+					};
+					$("#playing > #nome_musica"  ).html(nomeMusica);
+					$("#playing > #tempo_total_m").html(mins);
+					$("#playing > #tempo_total_s").html(secs);
+
+					tempo = 0;
+				}
 		}
 
 		function copiaArea () {
@@ -327,8 +400,9 @@ temperatura = 20;
 
 				    $("#total_conta_itens").html("Comprou <span>" + (sum) + "</span> produto(s).<br>");
 				    $("#total_conta").html("Total: <span>" + ( parseFloat($conta) + parseFloat($("#total_pedido>span").text())) + "</span>€");
-				    $("#detalhesConta").addClass("pure-button pure-button-xsmall").removeClass("pure-button-disabled");
+				    $("#detalhesConta").removeClass("pure-button-disabled");
 					$("#detalhesConta").prop('disabled', false);
+					$("#detalhesConta").css( 'cursor', 'pointer' );
 
 					copiaArea();
 					limpaPedidos();
@@ -341,7 +415,10 @@ temperatura = 20;
 		    });
 		 
 		    $( "#fazPedido" ).click(function() {
-		      $( "#dialogComprar" ).dialog( "open" );
+		    	if ($("#fazPedido").prop("disabled") == false)
+	    		{
+		      		$( "#dialogComprar" ).dialog( "open" );
+		      	};
 		    });
 		  });
 
@@ -371,7 +448,10 @@ temperatura = 20;
 	    });
 	 
 	    $( "#removeItens" ).click(function() {
-	      $( "#dialogApagar" ).dialog( "open" );
+	    	if ($("#removeItens").prop("disabled") == false)
+	    	{
+	      		$( "#dialogApagar" ).dialog( "open" );
+	      	}
 	    });
 	  });
 
@@ -395,7 +475,11 @@ temperatura = 20;
 	    });
 	 
 	    $( "#detalhesConta" ).click(function() {
-	      $( "#dialogConta" ).dialog( "open" );
+
+	    	if ($("#detalhesConta").prop("disabled") == false)
+	    	{
+	    	      $( "#dialogConta" ).dialog( "open" );
+	    	};
 	    });
 	  });
 

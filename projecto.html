@@ -23,18 +23,33 @@
 		<div class="pure-u-1 min-width">
 			<!-- AJUDA -->
 			<div id="help" onClick="$(this).toggle();"
-			style="position: absolute; width: 96%; height: 600px; padding:1% 2%; overflow:hidden; display:none;" 
+			style="position: absolute; width: 100%; height: 100%; overflow:hidden; display:none;" 
 			class="fakewindowcontain">
 				<div class="ui-overlay">
 					<div class="ui-widget-overlay"></div>
 					<div class="ui-widget-shadow ui-corner-all" 
-					style="width: 402px; height: 202px; position: absolute; top:37%; left:37%;"></div>
+					style="width: 40%; height: 65%; position: absolute; top:20%; left:31%;"></div>
 				</div>
-				<div style="position: absolute; width: 380px; height: 180px; top:37%; left:37%; padding: 10px;" 
-				class="ui-widget ui-widget-content ui-corner-all">
-					<p>
-						Este é o nosso futuro menu de ajuda. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima, quae quibusdam expedita pariatur non sapiente eaque officiis harum. Expedita, reprehenderit qui et ut repellat voluptates consectetur quam tempore cumque culpa.
-					</p>
+				<div style="position: absolute; width: 39.85%; height: 65%; top:20%; left:31%;" class="ui-widget ui-widget-content ui-corner-all">
+					<div id="text_ajuda" align="center"><b>AJUDA</b></div>
+						<p style="margin: 3% 1%;">
+						Abrir menu principal:<br>
+						- Tocando no botão azul "BarISTa" pode aceder à ementa, aos eventos do bar, 
+						aos jogos e à música.
+						</p>
+						<p style="margin: 3% 1%;">
+						Comprar um produto: <br>
+						- A Ementa permite-lhe fazer pedidos arrastando os produtos desejados para a área indicada.
+						</p>
+						<p style="margin: 3% 1%;">
+						Votar numa música: <br>
+						- Pode votar na próxima música a passar no bar tocando na opção "música".
+						</p>
+						<p style="margin: 3% 1%;">
+						Regular o Ar Condicionado: <br>
+						- Pode regular o Ar Condicionado da sua cabine usando os botões "-" e "+" 
+						que se encontram na mesa, do lado esquerdo, junto ao indicador de temperatura.
+						</p>
 				</div>
 			</div>
 			<div class="pure-u-1">
@@ -44,13 +59,6 @@
 			<aside id="fillerdiv" class="pure-u-1-5">
 
 				<canvas id="clockid" class="CoolClock:barISTa:60"></canvas>
-				<!--<div style="padding-top:2%; padding-down:25%" id="clockbox"></div>
-			<iframe src="http://free.timeanddate.com/clock/i3vk7o26/n133/szw110/szh110/hbw0/hfc000/cf100/hgr0/hwc000/fav0/fiv0/mqcfff/mql15/mqw4/mqd94/mhcfff/mhl15/mhw4/mhd94/mmv0/hhcbbb/hmcddd" width="112" height="112" style="border-style:none;"></iframe>
-			-->
-			<!-- RELOGIO - Digital -->
-			<!-- <div>
-				<script type="text/javascript">new imageclock.display();</script>
-			</div> -->
 			<!-- RELOGIO - Data-->
 			<div style="padding-top:2%; padding-down:25%" id="clockbox"></div>
 
@@ -58,7 +66,7 @@
 
 			<!-- AR CONDICIONADO -->
 			<div style="padding-top: 25px;">
-				<h4>Ar condicionado:</h4>
+				<img src="resources/arcondicionado.png" alt="ar condicionado" width="60%" height="60%">
 			</div>
 
 			<img src="resources/relogioMENOS.png" alt="menos" id="menos" class="arcondicionado"	onclick="regulaTemp(this);">
@@ -75,8 +83,9 @@
 			</div>
 
 			<div style="padding-top: 25px;">
-				<h4>A tocar:</h4>
+				<img src="resources/atocar.png" alt="a tocar" width="30%" height="30%">
 				<span id="tocar"></span>
+				<div id="barra_musica" style="margin-top: 4%;"></div>
 			</div>
 
 		</aside>
@@ -85,46 +94,46 @@
 
 			<div id="menu" class="pure-u-5-8 center" style="padding-left:0%; ">
 				<img id="barista" class="menu" onClick="switchMenus();" 
-					src="resources/barista_button.png"	alt="barista">
+					src="resources/barista_button.png" width="20%" height="20%"	alt="barista">
 				<img id="ementa" class="menu" 
 					onClick="switchEmenta(); checkMenusOpen(1); 
 						textObject.flash($('.flash'), 'colour', 700);"
-					src="resources/ementa_button.png" alt="ementa"   style="display:none">
+					src="resources/ementa_button.png" alt="ementa"   width="18%" height="18%" style="display:none">
 				<img id="conta" class="menu" onClick="switchMenus(); checkMenusOpen(4);" 
-					src="resources/eventos_button.png"	alt="conta"  style="display:none">
+					src="resources/eventos_button.png"	alt="eventos"  width="18%" height="18%" style="display:none">
 				<img id="musica" class="menu" onClick="switchMusica(); checkMenusOpen(5);" 
-					src="resources/musica_button.png"	alt="musica" style="display:none">
+					src="resources/musica_button.png"	alt="musica" width="18%" height="18%" style="display:none">
 				<img id="jogos" class="menu" onClick="switchMenus(); checkMenusOpen(2);" 
-					src="resources/jogos_button.png"	alt="jogos"  style="display:none">
+					src="resources/jogos_button.png"	alt="jogos"  width="18%" height="18%" style="display:none">
 				<img id="voltar" class="menu" onClick="switchMenus(); checkMenusOpen(3);" 
-					src="resources/voltar_button.png"	alt="voltar" style="display:none">
+					src="resources/voltar_button.png"	alt="voltar" width="18%" height="18%" style="display:none">
 			</div>
 
 			<div id="wrapper_ementa" class="clear" style="display: none">
 				<div id="ementa_tabela" class="pure-u-5-8 center" style="margin-left:7%; ">
-					<h1  style="margin: 0 auto 0;" class="clear-padding"> <!-- align left-->
+					<h1  class="clear-padding" style="margin: 0 auto 0; padding-top:2%;"> <!-- align left-->
 						Ementa
 					</h1>
 
 					<section class="pure-u-2-5 align-left product">
-						<h3 style="padding-left:15%">Bebidas</h3>
+						<h3 style="padding-left:3%">Bebidas</h3>
 
 						<ul id="lista_bebidas" class="clear-padding clear" 
-						  style="padding-left:15%" >
+						  style="padding-left:3%" >
 							<li data-id="1" class="draggable item li_cursor_m">
-								<span>Café</span> - Preço: <span>0.5</span>€
+								<span>Café</span><div style="float:right">Preço: <span>1</span>€</div>
 							</li>
 							<li data-id="2" class="draggable item li_cursor_m">
-								<span>Cerveja (33cl)</span> - Preço: <span>1</span>€
+								<span>Cerveja (33cl)</span><div style="float:right">Preço: <span>2</span>€</div>
 							</li>
 							<li data-id="3" class="draggable item li_cursor_m">
-								<span>Sangria (33cl)</span> - Preço: <span>2</span>€
+								<span>Sangria (33cl)</span><div style="float:right">Preço: <span>3</span>€</div>
 							</li>
 							<li data-id="4" class="draggable item li_cursor_m">
-								<span>Shot</span> - Preço: <span>2</span>€
+								<span>Shot</span><div style="float:right">Preço: <span>2</span>€</div>
 							</li>
 							<li data-id="5" class="draggable item li_cursor_m">
-								<span>Martini</span> - Preço: <span>4.5</span>€
+								<span>Martini</span><div style="float:right">Preço: <span>4</span>€</div>
 							</li>
 						</ul>
 					</section>
@@ -134,19 +143,19 @@
 						<h3>Comida</h3>
 						<ul id="lista_comidas" class="clear-padding clear">
 							<li data-id="6" class="draggable item li_cursor_m">
-								<span>Amendoins</span> - Preço: <span>1</span>€
+								<span>Amendoins</span><div style="float:right">Preço: <span>1</span>€</div>
 							</li>
 							<li data-id="7" class="draggable item li_cursor_m">
-								<span>Tosta Mista</span> - Preço: <span>2.5</span>€
+								<span>Tosta Mista</span><div style="float:right">Preço: <span>2</span>€</div>
 							</li>
 							<li data-id="8" class="draggable item li_cursor_m">
-								<span>Hamburguer</span> - Preço: <span>5</span>€
+								<span>Hamburguer</span><div style="float:right">Preço: <span>5</span>€</div>
 							</li>
 							<li data-id="9" class="draggable item li_cursor_m">
-								<span>Bitoque</span> - Preço: <span>7</span>€
+								<span>Bitoque</span><div style="float:right">Preço: <span>7</span>€</div>
 							</li>
 							<li data-id="10" class="draggable item li_cursor_m">
-								<span>Pão de Alho</span> - Preço: <span>3</span>€
+								<span>Pão de Alho</span><div style="float:right">Preço: <span>3</span>€</div>
 							</li>
 						</ul>
 					</section>
@@ -156,7 +165,7 @@
 				<div class="pure-u-5-8 center" style="margin-left:7%; ">
 
 					<div id="dialogApagar" title="Limpar o pedido?">
-						<p>Tem a certeza que quer apagar os<br> itens selecionados?</p>
+						<p>Tem a certeza que quer apagar os <br> itens selecionados?</p>
 					</div>
 
 					<div id="dialogComprar" title="Confirmar o pedido?">
@@ -166,16 +175,11 @@
 					<h3 style="text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;"
 						class="flash flash-white">Arraste para a área abaixo para encomendar</h3>
 					<!-- WRAPPER BOTOES -->
-					<div class="pure-u-11-12 center" style="margin-bottom:3%;">
+					<div class="pure-u-11-12 center" style="margin-bottom:1%;">
 						<!--BOTAO REMOVER -->
-						<button id="removeItens" style="margin-right:4%;" class="pure-button pure-button-disabled pure-button-xsmall" disabled="disabled"> <i class="fa fa-exclamation-triangle"></i>
-							Remover itens
-						</button>
+						<img id="removeItens" class="pure-button-disabled" disabled="disabled"  style="margin-right:4%;" src="resources/limparpedido2.png" alt="Limpar pedido" width="36%" height="36%">
 						<!--BOTAO FAZER PEDIDO -->
-						<button id="fazPedido" class="pure-button pure-button-disabled pure-button-xsmall" 
-								disabled="disabled"> <i class="fa fa-credit-card"></i>
-							Fazer Pedido
-						</button>
+						<img id="fazPedido" class="pure-button-disabled" disabled="disabled" src="resources/fazerpedido2.png" alt="Fazer pedido" width="36%" height="36%">
 					</div>
 
 					<!-- AREA DE ARRASTO -->
@@ -185,7 +189,7 @@
 								<span class="name">Produto</span>
 								<span class="count">Quantidade</span>
 							</div>
-							<ul></ul>
+							<ul style="overflow-y:auto; height:75px;"></ul>
 						</div>
 						<div id="total_pedido" style="text-align:right" class="price">
 							Total:
@@ -203,30 +207,37 @@
 
 				<ul class="clear-padding">
 					<li id="playing" class="musicas" >
-						Hans Zimmer - Time (Inception OST)
-						<br>Duração : 4:31</li>
+						<!-- <img src="resources/musica-frase.png" alt="a tocar" width="100%" height="100%"> -->
+						<span id="nome_musica">Hans Zimmer - Time (Inception OST)</span>
+						<br>Duração : <span id="tempo_total_m">04</span>:<span id="tempo_total_s">34</span></li>
 				</ul>
 
 				<h3>Músicas Disponíveis</h3>
 
 				<ul class="clear-padding">
 					<li class="musicas" >
-						Eric Clapton - Cocaine
-						<img id="pic1" class="votar_bt align-middle" alt="votar" src="resources/votar_button.png" onClick="votarMusica('pic1');" width="9%" height="9%">
-						<img id="1v"  class="nvotos align-middle" alt="10 votos" src="resources/10votos.png" width="9%" height="9%">
-						<br>Duração : 6:24</li>
+						<span>Eric Clapton - Cocaine</span>
+						<img id="pic1" class="votar_bt align-middle" alt="votar" src="resources/votar_button.png" onClick="votarMusica('pic1');" width="11%" height="11%">
+						<img id="1v"  data-vote="10" class="nvotos align-middle" alt="10 votos" src="resources/10votos.png" width="11%" height="11%">
+						<br>Duração : <span>06</span>:<span>24</span> </li>
 
 					<li class="musicas" >
-						Kavinsky - Nightcall
-						<img id="pic2" class="votar_bt align-middle" alt="votar" src="resources/votar_button.png" onClick="votarMusica('pic2');" width="9%" height="9%">
-						<img id="2v"  class="nvotos align-middle" alt="10 votos" src="resources/10votos.png" width="9%" height="9%">
-						<br>Duração : 3:45</li>
+						<span>Kavinsky - Nightcall</span>
+						<img id="pic2" class="votar_bt align-middle" alt="votar" src="resources/votar_button.png" onClick="votarMusica('pic2');" width="11%" height="11%">
+						<img id="2v"  data-vote="10" class="nvotos align-middle" alt="10 votos" src="resources/10votos.png" width="11%" height="11%">
+						<br>Duração : <span>03</span>:<span>45</span> </li>
 
 					<li class="musicas" >
-						SRV - Voodoo Child (Slight Return)
-						<img id="pic0"  class="votar_bt align-middle" alt="votar" src="resources/votar_button.png" onClick="votarMusica('pic0');" width="9%" height="9%">
-						<img id="0v"  class="nvotos align-middle" alt="15 votos" src="resources/9votos.png" width="9%" height="9%">
-						<br>Duração : 7:59</li>
+						<span>SRV - Voodoo Child (Slight Return)</span>
+						<img id="pic0" class="votar_bt align-middle" alt="votar" src="resources/votar_button.png" onClick="votarMusica('pic0');" width="11%" height="11%">
+						<img id="0v"  data-vote="9"  class="nvotos align-middle" alt="9 votos" src="resources/9votos.png" width="11%" height="11%">
+						<br>Duração : <span>07</span>:<span>59</span> </li>
+
+					<li class="musicas" >
+						<span>Hans Zimmer - Time (Inception OST)</span>
+						<img id="pic3" class="votar_bt align-middle" alt="votar" src="resources/votar_button.png" onClick="votarMusica('pic3');" width="11%" height="11%">
+						<img id="3v"  data-vote="8"  class="nvotos align-middle" alt="8 votos" src="resources/8votos.png" width="11%" height="11%">
+						<br>Duração : <span>04</span>:<span>34</span> </li>
 
 				</ul>
 			</div>
@@ -234,7 +245,7 @@
 
 		<div class="pure-u-1-12 center">
 
-			<img class="ajuda" src="resources/lifebuoy-blue.png" onClick="$('#help').toggle();" 
+			<img class="ajuda" src="resources/lifebuoy-blue.png" onClick="checkMenusOpen(7); $('#help').toggle();" 
 			alt="ajuda" width="70%" height="70%">
 			<p></p>
 
@@ -253,17 +264,13 @@
 				</p>
 			</div>
 
-			<div id="botoesConta" class="pure-u-11-12">
+			<div id="botoesConta" class="pure-u-1">
 				<div id="dialogConta" title="Detalhes da conta">
 					<ul id="dialogCorpoConta" class="clear-padding"></ul>
 				</div>
 				<!-- BOTAO DETALHES -->
-				<button id="detalhesConta" align="center" 
-						class="pure-button pure-button-disabled pure-button-xsmall"
-						disabled="disabled">
-					<i class="fa fa-file-text-o"></i>
-					Detalhes
-				</button>
+				<img id="detalhesConta" align="center" src="resources/detalhes_button_normal.png"
+					disabled="disabled" class="pure-button-disabled">
 			</div>
 		</div>
 	</div>
@@ -326,10 +333,12 @@
 					move.find("input").val(parseInt(move.find("input").val()) + 1);
 
 					//Fui eu a adicionar o que esta abaixo
-					$("#removeItens").addClass("pure-button pure-button-xsmall").removeClass("pure-button-disabled");
+					$("#removeItens").removeClass("pure-button-disabled");
 			    	$("#removeItens").prop('disabled', false);
-			    	$("#fazPedido").addClass("pure-button pure-button-xsmall").removeClass("pure-button-disabled");
+			    	$("#removeItens").css( 'cursor', 'pointer' );
+			    	$("#fazPedido").removeClass("pure-button-disabled");
 			    	$("#fazPedido").prop('disabled', false); 
+			    	$("#fazPedido").css( 'cursor', 'pointer' );
 				}
 
 				if (item < 6) {
@@ -352,7 +361,7 @@
 					+ '<button class="add">+</button>'
 					+ '<input class="count" value="1" disabled="disabled" type="text">'
 					+ '<button class="sub">-</button>');
-		}	
+		}
 
 
         // The function that is triggered once delete button is pressed
